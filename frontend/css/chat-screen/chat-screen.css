@@ -1,1 +1,95 @@
-/*# sourceMappingURL=chat-screen.css.map */
+.chat-screen {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  color: #494949;
+}
+.chat-screen .fa-chevron-left {
+  position: absolute;
+  font-size: 35px;
+  padding: 10px 17px;
+  top: 0;
+  left: 0;
+}
+.chat-screen .chat-input {
+  width: 90vw;
+  border: 1px solid #494949;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px 0;
+}
+.chat-screen .chat-input input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+}
+.chat-screen .chat-input input::-moz-placeholder {
+  color: rgb(176, 176, 176);
+}
+.chat-screen .chat-input input::placeholder {
+  color: rgb(176, 176, 176);
+}
+.chat-screen .chat-input .send-btn {
+  background-color: transparent;
+  border: none;
+  color: #ccd6a6;
+}
+
+.chat-scrollbox {
+  flex-grow: 1;
+  height: 0px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+}
+
+.chat-interface {
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.chat-interface .chat-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+.chat-interface .chat-message .chat {
+  border: 1px solid #494949;
+  border-radius: 20px;
+  max-width: 75%;
+  padding: 5px 15px;
+  font-size: 18px;
+}
+.chat-interface .assistant {
+  justify-content: flex-start;
+}
+.chat-interface .assistant .profile-pic {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 9px;
+  margin: 0 10px 0 0;
+}
+.chat-interface .user {
+  justify-content: flex-end;
+}
+.chat-interface .user .chat {
+  background-color: #e3e3e3;
+  border: none;
+}/*# sourceMappingURL=chat-screen.css.map */

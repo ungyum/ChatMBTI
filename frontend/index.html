@@ -9,14 +9,19 @@
     <link rel="stylesheet" href="css/background/background.css" />
     <link rel="stylesheet" href="css/start-screen/start-screen.css" />
     <link rel="stylesheet" href="css/chat-screen/chat-screen.css" />
+    <script
+      src="https://kit.fontawesome.com/76cd920807.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/general/for-hidden.css" />
     <title>ChatMBTI</title>
   </head>
   <body>
     <header>
       <div class="banner"><span>ChatMBTI</span>by ChatGPT</div>
     </header>
-    <div class="start-screen">
+    <div class="start-screen hidden">
       <p>친구의 MBTI를 골라주세요!</p>
       <div class="mbti-button">
         <div class="a">I</div>
@@ -26,13 +31,32 @@
       </div>
       <button class="start-btn">시작하기</button>
     </div>
-    <div class="chat-screen hidden">
-      <div class="back-btn">뒤로가기</div>
-      <div class="chat-interface">
-        <!-- 여기에 챗 메시지 하나하나 들어감 -->
+    <div class="chat-screen">
+      <i class="back-btn fa-solid fa-chevron-left"></i>
+      <div class="chat-scrollbox">
+        <div class="chat-interface">
+          <!-- assistant 예시 -->
+          <div class="chat-message assistant">
+            <img
+              class="profile-pic"
+              src="./assets/profile-icon.png"
+              alt="profile pic"
+            />
+            <span class="chat"
+              >여기에 내용 들어감 여기에 내용 들어감 여기에 내용 들어감 여기에
+              내용 들어감 여기에 내용 들어감</span
+            >
+          </div>
+          <!-- user 예시 -->
+          <div class="chat-message user">
+            <span class="chat">여기에 내용 들어감</span>
+          </div>
+        </div>
       </div>
+      <button class="assistant-btn">챗봇대화창 생성</button>
+      <button class="user-btn">유저대화창 생성</button>
       <div class="chat-input">
-        <input type="text" placeholder="챗을 입력하세요" />
+        <input class="input-text" type="text" placeholder="챗을 입력하세요" />
         <button class="send-btn">보내기</button>
       </div>
     </div>

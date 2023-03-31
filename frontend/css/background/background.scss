@@ -1,4 +1,5 @@
 @use "../general/foundation" as _;
+
 // 상단 배너
 .banner {
   @include _.full-width;

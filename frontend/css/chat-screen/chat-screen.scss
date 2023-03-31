@@ -1,1 +1,98 @@
 @use "../general/foundation" as _;
+
+.chat-screen {
+  flex-grow: 1; // 배너랑 광고 제외한 공간에 꽉 차게
+  @include _.flex-column;
+  justify-content: flex-end; // input 아래에 붙이기
+  position: relative; // position 값을 아무거나라도 줘야 자식의 absolute가 작동함
+  color: _.$font-color; // 이 안의 모든 글씨는 검은색
+
+  .fa-chevron-left {
+    position: absolute; // 위치 고정
+    font-size: 35px;
+    padding: 10px 17px;
+    top: 0;
+    left: 0;
+  }
+
+  // 인풋박스 보더라인 잡힌거
+  .chat-input {
+    width: 90vw;
+    border: 1px solid _.$font-color;
+    padding: 0 20px;
+    $input-height: 40px;
+    height: $input-height;
+    border-radius: calc($input-height / 2);
+    @include _.flex-row;
+    margin: 10px 0;
+
+    // 인풋
+    input {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      flex-grow: 1;
+    }
+    input::placeholder {
+      color: rgb(176, 176, 176);
+    }
+
+    // 보내기
+    .send-btn {
+      background-color: transparent;
+      border: none;
+      color: _.$base-color;
+    }
+  }
+}
+
+.chat-scrollbox {
+  flex-grow: 1;
+  height: 0px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+}
+
+.chat-interface {
+  width: 90vw; // 가로 꽉 채우기
+  @include _.flex-column;
+
+  // 공통으로 해당되는 것들
+  .chat-message {
+    @include _.flex-row;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 10px;
+
+    // 챗박스
+    .chat {
+      border: 1px solid _.$font-color;
+      border-radius: 20px;
+      max-width: 75%;
+      padding: 5px 15px;
+      font-size: 18px;
+    }
+  }
+
+  .assistant {
+    justify-content: flex-start;
+
+    // 아이콘
+    .profile-pic {
+      @include _.square(40px);
+      border-radius: 9px;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .user {
+    justify-content: flex-end;
+
+    // 유저의 챗박스
+    .chat {
+      background-color: #e3e3e3;
+      border: none;
+    }
+  }
+}
