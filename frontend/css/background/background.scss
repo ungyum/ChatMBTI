@@ -1,0 +1,30 @@
+@use "../general/foundation" as _;
+// 상단 배너
+.banner {
+  @include _.full-width;
+  @include _.flex-row;
+  @include _.background;
+  justify-content: flex-start;
+  padding: 0 0 0 20px;
+  height: 53px;
+  font-size: 1.3rem;
+  color: _.$font-color;
+  font-weight: 100;
+
+  span {
+    font-weight: 700;
+    padding-right: 7px;
+  }
+}
+
+// 광고
+.ad {
+  @include _.full-width;
+  @include _.flex-row;
+  height: 100px;
+  background-color: rgb(219, 219, 219);
+  font-size: 1.3rem;
+  color: _.$font-color;
+  font-weight: 100;
+  justify-self: end;
+}

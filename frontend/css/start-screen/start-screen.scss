@@ -1,0 +1,52 @@
+@use "../general/foundation" as _;
+
+// 메인 컨텐츠
+.start-screen {
+  @include _.full-width;
+  @include _.flex-column;
+  color: _.$font-color;
+  transform: translateY(-40px);
+
+  // 친구의 MBTI 어쩌구
+  p {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    width: 70%;
+  }
+
+  // 버튼들 담는 박스
+  .mbti-button {
+    @include _.flex-row;
+    justify-content: space-around;
+    font-size: 2.5rem;
+    font-weight: 900;
+  }
+
+  // 내부 버튼들
+  .mbti-button div {
+    @include _.background;
+    @include _.square(70px);
+    margin: 0 10px;
+    border-radius: 7px;
+    border: 1.6px solid _.$font-color;
+    line-height: 71px; // 글자 위라래로 움직이기
+    $offset: 2.6px; // 요거 조정하면 됨
+    box-shadow: $offset 4px 3.1px rgb(192, 192, 192);
+  }
+  // 시작하기 버튼
+  button {
+    @include _.background;
+    font-size: 1rem;
+    border: 1px solid _.$font-color;
+    margin-top: 60.1px;
+    width: 134px;
+    $height: 36px; // 요거 조정하면 됨
+    height: $height;
+    border-radius: calc($height/2);
+  }
+}
+
+.hidden {
+  display: none;
+}

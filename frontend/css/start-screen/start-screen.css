@@ -1,0 +1,48 @@
+.start-screen {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #494949;
+  transform: translateY(-40px);
+}
+.start-screen p {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 70%;
+}
+.start-screen .mbti-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+.start-screen .mbti-button div {
+  background-color: #ccd6a6;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 0 10px;
+  border-radius: 7px;
+  border: 1.6px solid #494949;
+  line-height: 71px;
+  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+}
+.start-screen button {
+  background-color: #ccd6a6;
+  font-size: 1rem;
+  border: 1px solid #494949;
+  margin-top: 60.1px;
+  width: 134px;
+  height: 36px;
+  border-radius: 18px;
+}
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=start-screen.css.map */

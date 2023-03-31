@@ -1,0 +1,32 @@
+.banner {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #ccd6a6;
+  justify-content: flex-start;
+  padding: 0 0 0 20px;
+  height: 53px;
+  font-size: 1.3rem;
+  color: #494949;
+  font-weight: 100;
+}
+.banner span {
+  font-weight: 700;
+  padding-right: 7px;
+}
+
+.ad {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100px;
+  background-color: rgb(219, 219, 219);
+  font-size: 1.3rem;
+  color: #494949;
+  font-weight: 100;
+  justify-self: end;
+}/*# sourceMappingURL=background.css.map */
