@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import FirstScreen from './screens/FirstScreen';
+import SecondScreen from './screens/SecondScreen';
 
 function App() {
+  const [page, setPage] = useState('first');
+
+  const handleNext = () => {
+    setPage('second');
+  };
+
+  const handleBack = () => {
+    setPage('first');
+  };
+
   return (
-    <div>
-      <h1>ChatMBTI by ChatGPT</h1>
-    </div>
+    <>
+      {page === 'first' ? <FirstScreen onNext={handleNext} /> : <SecondScreen onBack={handleBack} />}
+    </>
   );
 }
 
