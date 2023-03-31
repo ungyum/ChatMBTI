@@ -1,23 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-interface BannerProps {
-  title: string;
-}
+interface BannerProps {}
 
 const BannerContainer = styled.div`
-  background-color: #DABC1F;
-  color: white;
+  background-color: #ccd6a6;
+  color: #494949;
   padding: 10px 20px;
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 1rem;
 `;
 
-const Banner: React.FC<BannerProps> = ({ title }) => {
+const Banner: React.FC<BannerProps> = () => {
   return (
     <BannerContainer>
-      <span style={{ fontWeight: 'normal' }}>{title}</span>
+      <span style={{ fontWeight: "bolder" }}>ChatMBTI</span>
+      <span style={{ fontWeight: "thin" }}> by ChatGPT</span>
     </BannerContainer>
   );
 };
