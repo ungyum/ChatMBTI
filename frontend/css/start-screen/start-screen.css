@@ -13,7 +13,7 @@
   font-weight: bold;
   width: 70%;
 }
-.start-screen .mbti-button {
+.start-screen .mbti-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,17 +21,6 @@
   justify-content: space-around;
   font-size: 2.5rem;
   font-weight: 900;
-}
-.start-screen .mbti-button div {
-  background-color: #ccd6a6;
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  margin: 0 10px;
-  border-radius: 7px;
-  border: 1.6px solid #494949;
-  line-height: 71px;
-  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
 }
 .start-screen button {
   background-color: #ccd6a6;
@@ -41,4 +30,38 @@
   width: 134px;
   height: 36px;
   border-radius: 18px;
+  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+}
+.start-screen .mbti-btn {
+  background-color: #ccd6a6;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 0 10px;
+  border-radius: 7px;
+  border: 1.6px solid #494949;
+  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+  transform: perspective(150px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flip {
+  animation-name: flip;
+  animation-duration: 0.5s;
+}
+
+@keyframes flip {
+  0%, 100% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+    box-shadow: 2.6px -4px 3.1px rgb(192, 192, 192);
+  }
 }/*# sourceMappingURL=start-screen.css.map */

@@ -7,7 +7,7 @@
   color: _.$font-color;
   transform: translateY(-40px);
 
-  // 친구의 MBTI 어쩌구
+  // 친구의 MBTI 어쩌구 글씨
   p {
     text-align: center;
     font-size: 2.5rem;
@@ -15,25 +15,14 @@
     width: 70%;
   }
 
-  // 버튼들 담는 박스
-  .mbti-button {
+  // 버튼들 담는 가상의 박스
+  .mbti-buttons {
     @include _.flex-row;
     justify-content: space-around;
     font-size: 2.5rem;
     font-weight: 900;
   }
 
-  // 내부 버튼들
-  .mbti-button div {
-    @include _.background;
-    @include _.square(70px);
-    margin: 0 10px;
-    border-radius: 7px;
-    border: 1.6px solid _.$font-color;
-    line-height: 71px; // 글자 위라래로 움직이기
-    $offset: 2.6px; // 요거 조정하면 됨
-    box-shadow: $offset 4px 3.1px rgb(192, 192, 192);
-  }
   // 시작하기 버튼
   button {
     @include _.background;
@@ -44,5 +33,35 @@
     $height: 36px; // 요거 조정하면 됨
     height: $height;
     border-radius: calc($height/2);
+    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+  }
+
+  // 내부 버튼들
+  .mbti-btn {
+    @include _.background;
+    @include _.square(70px);
+    margin: 0 10px;
+    border-radius: 7px;
+    border: 1.6px solid _.$font-color;
+    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+    transform: perspective(150px);
+    user-select: none;
+    @include _.flex-column;
+  }
+}
+
+.flip {
+  animation-name: flip;
+  animation-duration: 0.5s;
+}
+
+@keyframes flip {
+  0%,
+  100% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+    box-shadow: 2.6px -4px 3.1px rgb(192, 192, 192);
   }
 }
