@@ -6,22 +6,22 @@ const no4 = document.querySelector(".no4");
 const mbti = ["i", "s", "t", "j"]; // mbti 값 담아줄 변수
 const mainText = document.querySelector(".main-text");
 const mbtiKeywords = {
-  // is** ttff 순, jpjp 순
+  // IS** ttff 순, jpjp 순
   istj: "ISTJ 키워드",
   istp: "ISTP 키워드",
   isfj: "ISFJ 키워드",
   isfp: "ISFP 키워드",
-  // in**
+  // IN** ttff 순, jpjp 순
   intj: "INTJ 키워드",
   intp: "INTP 키워드",
   infj: "INFJ 키워드",
   infp: "INFP 키워드",
-  // es**
+  // ES** ttff 순, jpjp 순
   estj: "ESTJ 키워드",
   estp: "ESTP 키워드",
   esfj: "ESFJ 키워드",
   esfp: "ESFP 키워드",
-  // en**
+  // EN** ttff 순, jpjp 순
   entj: "ENTJ 키워드",
   entp: "ENTP 키워드",
   enfj: "ENFJ 키워드",
