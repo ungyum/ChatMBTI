@@ -5,16 +5,20 @@
   align-items: center;
   flex-direction: row;
   background-color: #ccd6a6;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 0 0 20px;
   height: 53px;
   font-size: 1.3rem;
   color: #494949;
   font-weight: 100;
 }
-.banner span {
+.banner .banner-bold {
   font-weight: 700;
   padding-right: 7px;
+}
+.banner .help-btn {
+  margin-right: 11.5px;
+  font-size: 40px;
 }
 
 .ad {

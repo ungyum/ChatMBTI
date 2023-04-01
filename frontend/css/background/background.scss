@@ -5,16 +5,23 @@
   @include _.full-width;
   @include _.flex-row;
   @include _.background;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 0 0 20px;
-  height: 53px;
+  $banner-height: 53px;
+  height: $banner-height;
   font-size: 1.3rem;
   color: _.$font-color;
   font-weight: 100;
 
-  span {
+  .banner-bold {
     font-weight: 700;
     padding-right: 7px;
+  }
+
+  .help-btn {
+    $font-size: 40px;
+    margin-right: calc(5px + ($banner-height - $font-size) / 2);
+    font-size: $font-size;
   }
 }
 
