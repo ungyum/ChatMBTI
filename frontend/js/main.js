@@ -13,12 +13,28 @@ const no4 = document.querySelector(".no4");
 
 // 화면 이동
 startBtn.addEventListener("click", () => {
-  startScreen.classList.add("hidden");
-  chatScreen.classList.remove("hidden");
+  startScreen.classList.add("fade-out");
+  setTimeout(() => {
+    startScreen.classList.add("hidden");
+    startScreen.classList.remove("fade-out");
+    chatScreen.classList.add("fade-in");
+    chatScreen.classList.remove("hidden");
+    setTimeout(() => {
+      chatScreen.classList.remove("fade-in");
+    }, 300);
+  }, 300);
 });
 backBtn.addEventListener("click", () => {
-  startScreen.classList.remove("hidden");
-  chatScreen.classList.add("hidden");
+  chatScreen.classList.add("fade-out");
+  setTimeout(() => {
+    chatScreen.classList.add("hidden");
+    chatScreen.classList.remove("fade-out");
+    startScreen.classList.add("fade-in");
+    startScreen.classList.remove("hidden");
+    setTimeout(() => {
+      startScreen.classList.remove("fade-in");
+    }, 300);
+  }, 300);
 });
 
 // 스타트 스크린

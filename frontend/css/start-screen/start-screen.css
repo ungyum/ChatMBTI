@@ -64,4 +64,30 @@
     transform: rotateX(90deg);
     box-shadow: 2.6px -4px 3.1px rgb(192, 192, 192);
   }
+}
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 0.3s;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=start-screen.css.map */
