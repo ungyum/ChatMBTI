@@ -44,7 +44,6 @@
     border-radius: 7px;
     border: 1.6px solid _.$font-color;
     box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
-    transform: perspective(150px);
     user-select: none;
     @include _.flex-column;
   }
@@ -58,10 +57,14 @@
 @keyframes flip {
   0%,
   100% {
-    transform: rotateX(0deg);
+    transform: perspective(300px) rotateX(0deg);
   }
   50% {
-    transform: rotateX(90deg);
+    transform: perspective(300px) rotateX(90deg);
+    box-shadow: 2.6px -4px 3.1px rgb(192, 192, 192);
+  }
+  51% {
+    transform: perspective(300px) rotateX(-90deg);
     box-shadow: 2.6px -4px 3.1px rgb(192, 192, 192);
   }
 }
