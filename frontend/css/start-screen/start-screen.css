@@ -39,7 +39,10 @@
   height: 36px;
   border-radius: 18px;
   box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
-  margin-bottom: 5%;
+  margin-bottom: 25px;
+}
+.start-screen .quiz-btn {
+  background-color: rgb(255, 192, 104);
 }
 .start-screen .mbti-btn {
   background-color: #ccd6a6;
