@@ -1,11 +1,11 @@
 @use "../general/foundation" as _;
 
 .chat-screen {
-  flex-grow: 1; // 배너랑 광고 제외한 공간에 꽉 차게
   @include _.flex-column;
   justify-content: flex-end; // input 아래에 붙이기
   position: relative; // position 값을 아무거나라도 줘야 자식의 absolute가 작동함
   color: _.$font-color; // 이 안의 모든 글씨는 검은색
+  height: 100%;
 
   .fa-chevron-left {
     position: absolute; // 위치 고정

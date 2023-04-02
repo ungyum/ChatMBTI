@@ -15,7 +15,7 @@ body {
   word-spacing: 1.4px;
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* 태그들 세로로 정렬 */

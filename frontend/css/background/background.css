@@ -32,7 +32,6 @@
   font-size: 1.3rem;
   color: #494949;
   font-weight: 100;
-  justify-self: end;
 }
 
 .heart-beat {
@@ -46,4 +45,7 @@
   14%, 42% {
     transform: scale(1.3);
   }
+}
+.screen {
+  height: 100px;
 }/*# sourceMappingURL=background.css.map */

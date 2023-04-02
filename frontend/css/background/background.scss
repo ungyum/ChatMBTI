@@ -34,7 +34,7 @@
   font-size: 1.3rem;
   color: _.$font-color;
   font-weight: 100;
-  justify-self: end;
+  // justify-self: end;
 }
 
 .heart-beat {
@@ -50,4 +50,8 @@
   42% {
     transform: scale(1.3);
   }
+}
+
+.screen {
+  height: 100px;
 }

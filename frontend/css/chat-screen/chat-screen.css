@@ -1,5 +1,4 @@
 .chat-screen {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,6 +6,7 @@
   justify-content: flex-end;
   position: relative;
   color: #494949;
+  height: 100%;
 }
 .chat-screen .fa-chevron-left {
   position: absolute;
