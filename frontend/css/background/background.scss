@@ -2,7 +2,7 @@
 
 // 상단 배너
 .banner {
-  @include _.full-width;
+  width: 100%;
   @include _.flex-row;
   @include _.background;
   justify-content: space-between;
@@ -27,7 +27,7 @@
 
 // 광고
 .ad {
-  @include _.full-width;
+  width: 100%;
   @include _.flex-row;
   height: 100px;
   background-color: rgb(219, 219, 219);

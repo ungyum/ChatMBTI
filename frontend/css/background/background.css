@@ -1,5 +1,5 @@
 .banner {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
 }
 
 .ad {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
