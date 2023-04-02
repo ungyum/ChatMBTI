@@ -35,7 +35,7 @@
     @include _.background;
     font-size: 1rem;
     border: 1px solid _.$font-color;
-    width: 134px;
+    min-width: 150px;
     $height: 36px; // 요거 조정하면 됨
     height: $height;
     border-radius: calc($height/2);

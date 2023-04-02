@@ -35,7 +35,7 @@
   background-color: #ccd6a6;
   font-size: 1rem;
   border: 1px solid #494949;
-  width: 134px;
+  min-width: 150px;
   height: 36px;
   border-radius: 18px;
   box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
