@@ -17,8 +17,8 @@
   padding-right: 7px;
 }
 .banner .help-btn {
-  margin-right: 11.5px;
-  font-size: 40px;
+  margin-right: 12.5px;
+  font-size: 38px;
 }
 
 .ad {
@@ -33,4 +33,17 @@
   color: #494949;
   font-weight: 100;
   justify-self: end;
+}
+
+.heart-beat {
+  animation: heartBeat 2s 10s;
+}
+
+@keyframes heartBeat {
+  0%, 28%, 70% {
+    transform: scale(1);
+  }
+  14%, 42% {
+    transform: scale(1.3);
+  }
 }/*# sourceMappingURL=background.css.map */

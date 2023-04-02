@@ -32,6 +32,7 @@ const mbtiKeywords = {
 // mbti 버튼 클릭 시 뒤집기 애니메이션
 for (let i = 0; i < mbtiBtns.length; i++) {
   mbtiBtns[i].addEventListener("click", () => {
+    // 글자 바꿔주는거 확인용
     mbtiBtns[i].classList.toggle("flipped");
     // 애니메이션
     mbtiBtns[i].classList.remove("flip");
