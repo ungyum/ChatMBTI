@@ -1,10 +1,14 @@
 const chatInterface = document.querySelector(".chat-interface");
 const sendBtn = document.querySelector(".send-btn");
 const inputText = document.querySelector(".input-text");
+const chatScrollbox = document.querySelector(".chat-scrollbox");
 
 // 챗스크린
 // 보내기 버튼
 sendBtn.addEventListener("click", () => {
+  if (inputText.value === "") {
+    return;
+  }
   let message = inputText.value;
   inputText.value = "";
   addChatMessage(message, true);

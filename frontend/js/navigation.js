@@ -19,7 +19,6 @@ startBtn.addEventListener("click", () => {
 });
 // 시작화면 -> 채팅화면 시 help icon 애니메이션 주기
 startBtn.addEventListener("click", () => {
-  console.log("clicked");
   helpBtn.classList.remove("heart-beat");
   helpBtn.offsetWidth = helpBtn.offsetWidth;
   helpBtn.classList.add("heart-beat");
