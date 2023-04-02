@@ -35,6 +35,12 @@ startBtn.addEventListener("click", () => {
 
 // 뒤로가기버튼 누르면 채팅화면 -> 시작화면
 backBtn.addEventListener("click", () => {
+  // 퀴즈 넘어갈때 mbti ????으로 바꿔놓은거 원상복구
+  if (mbti.includes("?")) {
+    for (let i = 0; i < 4; i++) {
+      mbti[i] = mbtiHistory[i];
+    }
+  }
   screenTransitionFade(chatScreen, startScreen);
 });
 
