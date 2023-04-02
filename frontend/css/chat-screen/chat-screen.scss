@@ -5,7 +5,7 @@
   justify-content: flex-end; // input 아래에 붙이기
   position: relative; // position 값을 아무거나라도 줘야 자식의 absolute가 작동함
   color: _.$font-color; // 이 안의 모든 글씨는 검은색
-  height: 100%;
+  height: 100%; // screen 의 height에 딱 맞추기
 
   .fa-chevron-left {
     position: absolute; // 위치 고정
