@@ -16,6 +16,7 @@ body {
   display: flex;
   justify-content: space-between;
   /* height: 100vh; 이거 지워야 모바일에서 잘 작동함 */
+  background-color: rgb(254, 255, 243);
 }
 
 /* 태그들 세로로 정렬 */
