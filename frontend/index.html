@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/background/background.css" />
     <link rel="stylesheet" href="css/start-screen/start-screen.css" />
     <link rel="stylesheet" href="css/chat-screen/chat-screen.css" />
+    <link rel="stylesheet" href="css/quiz-screen/quiz-screen.css" />
     <script
       src="https://kit.fontawesome.com/76cd920807.js"
       crossorigin="anonymous"
@@ -22,6 +23,7 @@
     <script src="js/navigation.js" defer></script>
     <script src="js/start-screen.js" defer></script>
     <script src="js/chat-screen.js" defer></script>
+    <script src="js/quiz.js" defer></script>
     <title>ChatMBTI</title>
   </head>
   <body>
@@ -70,12 +72,19 @@
             </div>
           </div>
         </div>
-        <button class="assistant-btn">챗봇대화창 생성</button>
-        <button class="user-btn">유저대화창 생성</button>
+        <div class="test-container">
+          <button class="assistant-btn">챗봇대화창 생성</button>
+          <button class="user-btn">유저대화창 생성</button>
+        </div>
         <div class="chat-input">
           <input class="input-text" type="text" placeholder="챗을 입력하세요" />
           <button class="send-btn">보내기</button>
         </div>
+      </div>
+      <!-- 퀴즈 설명 -->
+      <div class="quiz-inform-screen hidden">
+        <p>게임 설명: 어쩌구 저쩌구</p>
+        <button class="quiz-start-btn">START</button>
       </div>
     </div>
     <footer>

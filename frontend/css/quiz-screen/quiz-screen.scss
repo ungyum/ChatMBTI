@@ -1,0 +1,6 @@
+@use "../general/foundation" as _;
+
+.quiz-inform-screen {
+  @include _.flex-column;
+  height: 100%;
+}

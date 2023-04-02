@@ -1,22 +1,31 @@
 const startBtn = document.querySelector(".start-btn");
 const backBtn = document.querySelector(".back-btn");
+const quizBtn = document.querySelector(".quiz-btn");
+const quizStartBtn = document.querySelector(".quiz-start-btn");
 const startScreen = document.querySelector(".start-screen");
 const chatScreen = document.querySelector(".chat-screen");
+const quizInformScreen = document.querySelector(".quiz-inform-screen");
 const helpBtn = document.querySelector(".help-btn");
 
-// 화면 이동: 시작 화면 -> 채팅 화면
-startBtn.addEventListener("click", () => {
-  startScreen.classList.add("fade-out");
+// 화면전환 fade in/out 효과, 사용법: 첫인자 -> 둘째인자
+const screenTransitionFade = (screen1, screen2) => {
+  screen1.classList.add("fade-out");
   setTimeout(() => {
-    startScreen.classList.add("hidden");
-    startScreen.classList.remove("fade-out");
-    chatScreen.classList.add("fade-in");
-    chatScreen.classList.remove("hidden");
+    screen1.classList.add("hidden");
+    screen1.classList.remove("fade-out");
+    screen2.classList.add("fade-in");
+    screen2.classList.remove("hidden");
     setTimeout(() => {
-      chatScreen.classList.remove("fade-in");
+      screen2.classList.remove("fade-in");
     }, 300);
   }, 300);
+};
+
+// 시작버튼 누르면 시작화면 -> 채팅화면
+startBtn.addEventListener("click", () => {
+  screenTransitionFade(startScreen, chatScreen);
 });
+
 // 시작화면 -> 채팅화면 시 help icon 애니메이션 주기
 startBtn.addEventListener("click", () => {
   helpBtn.classList.remove("heart-beat");
@@ -24,16 +33,16 @@ startBtn.addEventListener("click", () => {
   helpBtn.classList.add("heart-beat");
 });
 
-// 화면 이동: 채팅 화면 -> 시작 화면
+// 뒤로가기버튼 누르면 채팅화면 -> 시작화면
 backBtn.addEventListener("click", () => {
-  chatScreen.classList.add("fade-out");
-  setTimeout(() => {
-    chatScreen.classList.add("hidden");
-    chatScreen.classList.remove("fade-out");
-    startScreen.classList.add("fade-in");
-    startScreen.classList.remove("hidden");
-    setTimeout(() => {
-      startScreen.classList.remove("fade-in");
-    }, 300);
-  }, 300);
+  screenTransitionFade(chatScreen, startScreen);
+});
+
+// 퀴즈버튼 누르면 시작화면 -> 설명화면
+quizBtn.addEventListener("click", () => {
+  screenTransitionFade(startScreen, quizInformScreen);
+});
+// 설명화면 -> 채팅화면
+quizStartBtn.addEventListener("click", () => {
+  screenTransitionFade(quizInformScreen, chatScreen);
 });
