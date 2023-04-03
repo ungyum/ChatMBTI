@@ -28,12 +28,8 @@ const mbtiList = [
 ];
 
 // 시작화면에서 퀴즈버튼 눌렀을 때
-quizBtn.addEventListener("click", () => {
+quizStartBtn.addEventListener("click", () => {
   initGame();
-  // 챗스크린에 quiz 넣어주고
-  chatScreen.classList.add("quiz");
-  // quiz-ui에 hidden 지워주고
-  quizUI.classList.remove("hidden");
 });
 
 // 새 게임 만들기

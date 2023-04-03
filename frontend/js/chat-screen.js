@@ -6,13 +6,6 @@ const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
 const ansBtn = document.querySelector(".ans-btn");
 const quizUI = document.querySelector(".quiz-ui");
 
-// 챗스크린
-// 일반챗은 quiz 빼주고 mbti-buttons-chat에 히든도 넣어주고
-startBtn.addEventListener("click", () => {
-  chatScreen.classList.remove("quiz");
-  quizUI.classList.add("hidden");
-});
-
 // 보내기 버튼
 sendBtn.addEventListener("click", () => {
   if (inputText.value === "") {

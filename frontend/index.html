@@ -21,10 +21,8 @@
     />
     <link rel="stylesheet" href="css/general/for-hidden.css" />
     <script src="js/background.js" defer></script>
-    <script src="js/navigation.js" defer></script>
+    <!-- <script src="js/navigation.js" defer></script> -->
     <script src="js/start-screen.js" defer></script>
-    <script src="js/chat-screen.js" defer></script>
-    <script src="js/quiz.js" defer></script>
     <title>ChatMBTI</title>
   </head>
   <body>
@@ -37,7 +35,7 @@
     </header>
     <div class="screen">
       <!-- 스타트 스크린 -->
-      <div class="start-screen hidden">
+      <div class="start-screen">
         <div class="text-box">
           <p class="main-text">친구의 MBTI를 골라주세요!</p>
         </div>
@@ -47,62 +45,18 @@
           <div class="mbti-btn no3 flip"><span>T</span></div>
           <div class="mbti-btn no4 flip"><span>J</span></div>
         </div>
-        <button class="start-btn">채팅 시작하기</button>
-        <button class="quiz-btn">❓MBTI 퀴즈❓</button>
-      </div>
-      <!-- 챗스크린 -->
-      <div class="chat-screen">
-        <i class="back-btn fa-solid fa-chevron-left"></i>
-        <div class="quiz-ui">
-          <div class="mbti-buttons mbti-buttons-chat">
-            <div class="mbti-btn mbti-btn-chat no1 flipped flip default">
-              <span>?</span>
-            </div>
-            <div class="mbti-btn mbti-btn-chat no2 flipped flip default">
-              <span>?</span>
-            </div>
-            <div class="mbti-btn mbti-btn-chat no3 flipped flip default">
-              <span>?</span>
-            </div>
-            <div class="mbti-btn mbti-btn-chat no4 flipped flip default">
-              <span>?</span>
-            </div>
-          </div>
-          <button class="ans-btn">결정하기</button>
-        </div>
-        <div class="chat-scrollbox">
-          <div class="chat-interface">
-            <!-- assistant 예시 -->
-            <div class="chat-message assistant">
-              <img
-                class="profile-pic"
-                src="./assets/profile-icon.png"
-                alt="profile pic"
-              />
-              <span class="chat"
-                >여기에 내용 들어감 여기에 내용 들어감 여기에 내용 들어감 여기에
-                내용 들어감 여기에 내용 들어감</span
-              >
-            </div>
-            <!-- user 예시 -->
-            <div class="chat-message user">
-              <span class="chat">여기에 내용 들어감</span>
-            </div>
-          </div>
-        </div>
-        <div class="test-container">
-          <button class="assistant-btn">챗봇대화창 생성</button>
-          <button class="user-btn">유저대화창 생성</button>
-        </div>
-        <div class="chat-input">
-          <input class="input-text" type="text" placeholder="챗을 입력하세요" />
-          <button class="send-btn">보내기</button>
-        </div>
-      </div>
-      <!-- 퀴즈 설명 -->
-      <div class="quiz-inform-screen hidden">
-        <p>게임 설명: 어쩌구 저쩌구</p>
-        <button class="quiz-start-btn">START</button>
+        <button
+          class="start-btn"
+          onclick="location.href = 'screens/chat-screen.html'"
+        >
+          채팅 시작하기
+        </button>
+        <button
+          class="quiz-btn"
+          onclick="location.href = 'screens/quiz-screen.html'"
+        >
+          ❓MBTI 퀴즈❓
+        </button>
       </div>
     </div>
     <footer>
