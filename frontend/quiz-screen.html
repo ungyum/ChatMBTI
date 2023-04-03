@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/general/normalize.css" />
-    <link rel="stylesheet" href="../css/general/base.css" />
-    <link rel="stylesheet" href="../css/background/background.css" />
-    <link rel="stylesheet" href="../css/start-screen/start-screen.css" />
-    <link rel="stylesheet" href="../css/chat-screen/chat-screen.css" />
-    <link rel="stylesheet" href="../css/quiz-screen/quiz-screen.css" />
-    <link rel="stylesheet" href="../css/responsive-pc/responsive-pc.css" />
+    <link rel="stylesheet" href="css/general/normalize.css" />
+    <link rel="stylesheet" href="css/general/base.css" />
+    <link rel="stylesheet" href="css/background/background.css" />
+    <link rel="stylesheet" href="css/start-screen/start-screen.css" />
+    <link rel="stylesheet" href="css/chat-screen/chat-screen.css" />
+    <link rel="stylesheet" href="css/quiz-screen/quiz-screen.css" />
+    <link rel="stylesheet" href="css/responsive-pc/responsive-pc.css" />
     <script
       src="https://kit.fontawesome.com/76cd920807.js"
       crossorigin="anonymous"
@@ -19,10 +19,12 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,0,0"
     />
-    <link rel="stylesheet" href="../css/general/for-hidden.css" />
-    <script src="../js/background.js" defer></script>
-    <!-- <script src="../js/navigation.js" defer></script> -->
-    <script src="../js/chat-screen.js" defer></script>
+    <link rel="stylesheet" href="css/general/for-hidden.css" />
+    <script src="js/background.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/start-screen.js" defer></script>
+    <script src="js/chat-screen.js" defer></script>
+    <script src="js/quiz.js" defer></script>
     <title>ChatMBTI</title>
   </head>
   <body>
@@ -37,18 +39,35 @@
     </header>
     <div class="screen">
       <!-- 챗스크린 -->
-      <div class="chat-screen">
+      <div class="chat-screen quiz hidden">
         <i
           class="back-btn fa-solid fa-chevron-left"
-          onclick="location.href = '../index.html'"
+          onclick="location.href = 'index.html'"
         ></i>
+        <div class="quiz-ui">
+          <div class="mbti-buttons mbti-buttons-chat">
+            <div class="mbti-btn mbti-btn-chat no1 flipped flip default">
+              <span>?</span>
+            </div>
+            <div class="mbti-btn mbti-btn-chat no2 flipped flip default">
+              <span>?</span>
+            </div>
+            <div class="mbti-btn mbti-btn-chat no3 flipped flip default">
+              <span>?</span>
+            </div>
+            <div class="mbti-btn mbti-btn-chat no4 flipped flip default">
+              <span>?</span>
+            </div>
+          </div>
+          <button class="ans-btn">결정하기</button>
+        </div>
         <div class="chat-scrollbox">
           <div class="chat-interface">
             <!-- assistant 예시 -->
             <div class="chat-message assistant">
               <img
                 class="profile-pic"
-                src="../assets/profile-icon.png"
+                src="./assets/profile-icon.png"
                 alt="profile pic"
               />
               <span class="chat"
@@ -72,7 +91,7 @@
         </div>
       </div>
       <!-- 퀴즈 설명 -->
-      <div class="quiz-inform-screen hidden">
+      <div class="quiz-inform-screen">
         <p>게임 설명: 어쩌구 저쩌구</p>
         <button class="quiz-start-btn">START</button>
       </div>

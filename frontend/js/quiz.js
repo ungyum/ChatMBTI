@@ -2,6 +2,7 @@ const mbtiBtnChat = document.querySelectorAll(".mbti-btn-chat");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
+let tries;
 
 // 백엔드용
 const mbtiList = [
@@ -48,6 +49,8 @@ const initGame = () => {
   for (let i = 0; i < mbtiBtnChat.length; i++) {
     mbtiBtnChat[i].children[0].innerText = "?";
   }
+  // tries 초기화
+  tries = 0;
 };
 
 // 랜덤 mbti 뽑기 함수
@@ -114,3 +117,7 @@ const checkDefault = () => {
     }
   }
 };
+
+sendBtn.addEventListener("click", () => {
+  tries++;
+});
