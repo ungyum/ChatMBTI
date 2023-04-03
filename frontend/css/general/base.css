@@ -8,6 +8,10 @@
   font-family: "Pretendard Variable", sans-serif;
 }
 
+/* 이거 있어야 body 풀화면 가능 */
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +20,7 @@ body {
   display: flex;
   justify-content: space-between;
   /* height: 100vh; 이거 지워야 모바일에서 잘 작동함 */
+  height: 100%;
   background-color: rgb(252, 255, 247);
 }
 
