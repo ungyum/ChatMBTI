@@ -21,16 +21,6 @@
   font-weight: bold;
   width: 70%;
 }
-.start-screen .mbti-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin: 0 0 50px 0;
-}
 .start-screen button {
   background-color: #ccd6a6;
   font-size: 1rem;
@@ -44,7 +34,18 @@
 .start-screen .quiz-btn {
   background-color: rgb(254, 231, 114);
 }
-.start-screen .mbti-btn {
+
+.mbti-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 0 50px 0;
+}
+.mbti-buttons .mbti-btn {
   background-color: #ccd6a6;
   width: 70px;
   height: 70px;

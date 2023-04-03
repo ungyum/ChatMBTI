@@ -4,3 +4,44 @@
   @include _.flex-column;
   height: 100%;
 }
+
+.chat-screen {
+  .mbti-buttons {
+    margin: 5% 0 5% 0;
+  }
+
+  .mbti-btn {
+    @include _.square(50px);
+
+    span {
+      font-size: 30px;
+    }
+  }
+}
+
+// .chat-screen {
+//   // 버튼들 담는 가상의 박스
+//   .mbti-buttons {
+//     @include _.flex-row;
+//     justify-content: space-between;
+//     font-size: 2.5rem;
+//     font-weight: 900;
+//     margin: 5% 0 5% 0;
+//   }
+
+//   // 내부 버튼들
+//   .mbti-btn {
+//     @include _.background;
+//     @include _.square(50px);
+//     margin: 0 10px;
+//     border-radius: 7px;
+//     border: 1.6px solid _.$font-color;
+//     box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+//     user-select: none;
+//     @include _.flex-column;
+
+//     span {
+//       font-size: 30px;
+//     }
+//   }
+// }
