@@ -1,0 +1,8 @@
+@media (min-width: 600px) {
+  .chat-screen .quiz-ui {
+    flex-direction: row;
+  }
+  .chat-screen .quiz-ui .ans-btn {
+    margin-left: 25px;
+  }
+}/*# sourceMappingURL=responsive-pc.css.map */

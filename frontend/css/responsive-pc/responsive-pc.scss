@@ -1,0 +1,13 @@
+@use "../general/foundation" as _;
+
+@media (min-width: 600px) {
+  .chat-screen {
+    .quiz-ui {
+      flex-direction: row;
+
+      .ans-btn {
+        margin-left: 25px;
+      }
+    }
+  }
+}
