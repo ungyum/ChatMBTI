@@ -27,7 +27,16 @@ const mbtiList = [
   "enfp",
 ];
 
-// 새 게임
+// 시작화면에서 퀴즈버튼 눌렀을 때
+quizBtn.addEventListener("click", () => {
+  initGame();
+  // 챗스크린에 quiz 넣어주고
+  chatScreen.classList.add("quiz");
+  // quiz-ui에 hidden 지워주고
+  quizUI.classList.remove("hidden");
+});
+
+// 새 게임 만들기
 const initGame = () => {
   // 채팅창 지워주고
   chatInterface.innerHTML = "";
@@ -45,15 +54,6 @@ const initGame = () => {
   }
 };
 
-// 시작화면에서 퀴즈버튼 눌렀을 때
-quizBtn.addEventListener("click", () => {
-  initGame();
-  // 챗스크린에 quiz 넣어주고
-  chatScreen.classList.add("quiz");
-  // quiz-ui에 hidden 지워주고
-  quizUI.classList.remove("hidden");
-});
-
 // 랜덤 mbti 뽑기 함수
 const pickRandomMBTI = () => {
   // 0-15까지 랜덤넘버 만들어주고
@@ -61,14 +61,14 @@ const pickRandomMBTI = () => {
   ans = randomNum;
 };
 
-// 글자바꿔주기 용
+// mbtiBtnChat 누르면
+// 코드줄이기 용
 const mbtiBtnText = [
   { unflipped: "I", flipped: "E" },
   { unflipped: "S", flipped: "N" },
   { unflipped: "T", flipped: "F" },
   { unflipped: "J", flipped: "P" },
 ];
-// mbtiBtnChat 누르면
 for (let i = 0; i < mbtiBtnChat.length; i++) {
   mbtiBtnChat[i].addEventListener("click", () => {
     // 처음 누르면 default 지워주고
@@ -84,21 +84,11 @@ for (let i = 0; i < mbtiBtnChat.length; i++) {
 
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
-  // mbtiBtnChat 들의 classList가 default를 하나라도 포함하면
-  for (let i = 0; i < mbtiBtnChat.length; i++) {
-    if (!mbtiBtnChat[i].classList.contains("default")) {
-      // flipped 여부 guess 배열에 넣어주기
-      if (mbtiBtnChat[i].classList.contains("flipped")) {
-        guess[i] = 1;
-      } else {
-        guess[i] = 0;
-      }
-    }
-    // default를 포함하면 alert 띄워주고 return
-    if (mbtiBtnChat[i].classList.contains("default")) {
-      alert("모든 항목을 선택해주세요.");
-      return;
-    }
+  getGuess();
+  // default 있으면 경고창 띄우고
+  if (checkDefault()) {
+    alert("모든 문항을 선택해주세요!");
+    return;
   }
   // guess가 정답이면
   if (parseInt(guess.join(""), 2) === ans) {
@@ -107,3 +97,24 @@ ansBtn.addEventListener("click", () => {
     alert("틀렸습니다!");
   }
 });
+
+// 결정하기 버튼 부품들
+const getGuess = () => {
+  for (let i = 0; i < 4; i++) {
+    if (!mbtiBtnChat[i].classList.contains("default")) {
+      // flipped 여부 guess 배열에 넣어주기
+      if (mbtiBtnChat[i].classList.contains("flipped")) {
+        guess[i] = 1;
+      } else {
+        guess[i] = 0;
+      }
+    }
+  }
+};
+const checkDefault = () => {
+  for (let i = 0; i < 4; i++) {
+    if (mbtiBtnChat[i].classList.contains("default")) {
+      return true;
+    }
+  }
+};
