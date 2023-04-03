@@ -7,7 +7,9 @@ const ansBtn = document.querySelector(".ans-btn");
 const quizUI = document.querySelector(".quiz-ui");
 
 // 보내기 버튼
-sendBtn.addEventListener("click", () => {
+sendBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  inputText.focus();
   if (inputText.value === "") {
     return;
   }
