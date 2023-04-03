@@ -22,6 +22,7 @@ body {
   /* height: 100vh; 이거 지워야 모바일에서 잘 작동함 */
   height: 100%;
   background-color: rgb(252, 255, 247);
+  color: #494949;
 }
 
 /* 태그들 세로로 정렬 */

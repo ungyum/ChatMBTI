@@ -39,3 +39,92 @@
     margin: 10px 0;
   }
 }
+
+// 결과창
+.result-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.629);
+  z-index: 1;
+  @include _.flex-column;
+}
+
+.result-container {
+  @include _.test;
+  @include _.flex-column;
+  background-color: _.$background-color;
+  color: black;
+  font-size: 25px;
+  padding: 20px;
+  border-radius: 20px;
+  font-weight: 400;
+
+  button {
+    font-size: 30px;
+    @include _.background;
+    font-size: 1rem;
+    border: 1px solid _.$font-color;
+    min-width: 150px;
+    $height: 36px; // 요거 조정하면 됨
+    height: $height;
+    border-radius: calc($height/2);
+    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+    margin: 10px;
+  }
+}
+
+.correct-result-container {
+  p {
+    // @include _.test;
+    margin: 10px;
+  }
+
+  // 축하합니다
+  p:nth-child(1) {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  // x번
+  p:nth-child(2) {
+    font-weight: 600;
+    font-size: 60px;
+  }
+
+  // 만에 성공
+  p:nth-child(3) {
+    font-size: 20px;
+    transform: translateY(-20px);
+    font-weight: 500;
+  }
+}
+
+.wrong-result-container {
+  p {
+    // @include _.test;
+    margin: 10px;
+  }
+
+  // "실망이야"
+  p:nth-child(1) {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  // 그는
+  p:nth-child(2) {
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  // 다시 도전해보세요
+  p:nth-child(3) {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

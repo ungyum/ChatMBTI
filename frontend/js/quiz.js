@@ -1,4 +1,10 @@
 const mbtiBtnChat = document.querySelectorAll(".mbti-btn-chat");
+const reslutPopup = document.querySelector(".result-popup");
+const regameBtns = document.querySelectorAll(".regame-btn");
+const correctResultContainer = document.querySelector(
+  ".correct-result-container"
+);
+const wrongResultContainer = document.querySelector(".wrong-result-container");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
@@ -51,6 +57,8 @@ const initGame = () => {
   }
   // tries 초기화
   tries = 0;
+  // 결과창 숨기기
+  reslutPopup.classList.add("hidden");
 };
 
 // 랜덤 mbti 뽑기 함수
@@ -91,9 +99,9 @@ ansBtn.addEventListener("click", () => {
   }
   // guess가 정답이면
   if (parseInt(guess.join(""), 2) === ans) {
-    alert("정답입니다!");
+    showResultCorrect();
   } else {
-    alert("틀렸습니다!");
+    showResultWrong();
   }
 });
 
@@ -118,6 +126,30 @@ const checkDefault = () => {
   }
 };
 
+// 채팅할때마다 tries 증가
 sendBtn.addEventListener("click", () => {
   tries++;
+});
+
+// 맞았을 때 결과창
+const showResultCorrect = () => {
+  reslutPopup.classList.remove("hidden");
+  correctResultContainer.classList.remove("hidden");
+  wrongResultContainer.classList.add("hidden");
+};
+
+// 틀렸을 때 결과창
+const showResultWrong = () => {
+  reslutPopup.classList.remove("hidden");
+  correctResultContainer.classList.add("hidden");
+  wrongResultContainer.classList.remove("hidden");
+};
+
+// 다시하기 버튼 눌렀을 때
+regameBtns.forEach((regameBtn) => {
+  regameBtn.addEventListener("click", () => {
+    // 팝업 숨기고
+    reslutPopup.classList.add("hidden");
+    initGame();
+  });
 });
