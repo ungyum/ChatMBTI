@@ -9,6 +9,9 @@
   .quiz-ui {
     @include _.flex-column;
   }
+  .quiz-ui.hidden {
+    display: none;
+  }
 
   .mbti-buttons-chat {
     margin: 10px 0 10px 0;

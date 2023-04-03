@@ -12,6 +12,9 @@
   align-items: center;
   flex-direction: column;
 }
+.chat-screen .quiz-ui.hidden {
+  display: none;
+}
 .chat-screen .mbti-buttons-chat {
   margin: 10px 0 10px 0;
 }
