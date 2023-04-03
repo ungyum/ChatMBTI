@@ -1,4 +1,4 @@
-const mbtiBtns = document.querySelectorAll(".mbti-btn");
+const mbtiBtnChat = document.querySelectorAll(".mbti-btn");
 const no1 = document.querySelector(".no1");
 const no2 = document.querySelector(".no2");
 const no3 = document.querySelector(".no3");
@@ -30,14 +30,14 @@ const mbtiKeywords = {
 
 // 스타트 스크린
 // mbti 버튼 클릭 시 뒤집기 애니메이션
-for (let i = 0; i < mbtiBtns.length; i++) {
-  mbtiBtns[i].addEventListener("click", () => {
+for (let i = 0; i < mbtiBtnChat.length; i++) {
+  mbtiBtnChat[i].addEventListener("click", () => {
     // 글자 바꿔주는거 확인용
-    mbtiBtns[i].classList.toggle("flipped");
+    mbtiBtnChat[i].classList.toggle("flipped");
     // 애니메이션
-    mbtiBtns[i].classList.remove("flip");
-    mbtiBtns[i].offsetWidth = mbtiBtns[i].offsetWidth;
-    mbtiBtns[i].classList.add("flip");
+    mbtiBtnChat[i].classList.remove("flip");
+    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
+    mbtiBtnChat[i].classList.add("flip");
   });
 }
 // mbti 버튼들 클릭시 글자 바꿔주기
@@ -96,8 +96,8 @@ no4.addEventListener("click", () => {
 });
 
 // mbti 버튼 클릭 시 main-text 바꿔주기
-for (let i = 0; i < mbtiBtns.length; i++) {
-  mbtiBtns[i].addEventListener("click", () => {
+for (let i = 0; i < mbtiBtnChat.length; i++) {
+  mbtiBtnChat[i].addEventListener("click", () => {
     const mbtiStr = mbti.join("");
     mainText.innerText = mbtiKeywords[mbtiStr];
   });

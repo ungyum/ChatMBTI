@@ -153,3 +153,14 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
+
+for (let i = 0; i < mbtiBtnChat.length; i++) {
+  mbtiBtnChat[i].addEventListener("click", () => {
+    // 글자 바꿔주는거 확인용
+    mbtiBtnChat[i].classList.toggle("flipped");
+    // 애니메이션
+    mbtiBtnChat[i].classList.remove("flip");
+    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
+    mbtiBtnChat[i].classList.add("flip");
+  });
+}
