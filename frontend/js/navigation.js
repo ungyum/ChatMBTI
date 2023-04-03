@@ -19,6 +19,7 @@ const screenTransitionFade = (screen1, screen2) => {
       screen2.classList.remove("fade-in");
     }, 300);
   }, 300);
+  adjustScreenHeight(); // 요거는 빼줘도 됨. 만일을 대비해서 넣어준거
 };
 
 // 시작버튼 누르면 시작화면 -> 채팅화면

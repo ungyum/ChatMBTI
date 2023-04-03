@@ -21,6 +21,10 @@
   font-size: 38px;
 }
 
+.screen {
+  height: var(--screen-height);
+}
+
 .ad {
   width: 100%;
   display: flex;
