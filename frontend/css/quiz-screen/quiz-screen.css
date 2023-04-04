@@ -118,4 +118,22 @@
 .wrong-result-container p:nth-child(3) {
   font-size: 20px;
   font-weight: 500;
+}
+
+.fade-in-down {
+  animation-name: fadeInDown;
+  animation-duration: var(--custom-duration, 1s);
+  animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
 }/*# sourceMappingURL=quiz-screen.css.map */

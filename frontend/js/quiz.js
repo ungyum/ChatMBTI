@@ -149,16 +149,16 @@ sendBtn.addEventListener("click", () => {
 
 // 맞았을 때 결과창
 const showResultCorrect = () => {
-  reslutPopup.classList.remove("hidden");
   correctResultContainer.classList.remove("hidden");
   wrongResultContainer.classList.add("hidden");
+  openPopup(reslutPopup, "fade-in", 700);
 };
 
 // 틀렸을 때 결과창
 const showResultWrong = () => {
-  reslutPopup.classList.remove("hidden");
   correctResultContainer.classList.add("hidden");
   wrongResultContainer.classList.remove("hidden");
+  openPopup(reslutPopup, "fade-in", 700);
 };
 
 // 다시하기 버튼 눌렀을 때

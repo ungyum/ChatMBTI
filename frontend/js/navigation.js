@@ -34,28 +34,6 @@ const screenTransitionFade = (
   adjustScreenHeight(); // 요거는 빼줘도 됨. 만일을 대비해서 넣어준거
 };
 
-// // 시작버튼 누르면 시작화면 -> 채팅화면
-// startBtn.addEventListener("click", () => {
-//   screenTransitionFade(startScreen, chatScreen);
-// });
-
-// // 시작화면 -> 채팅화면 시 help icon 애니메이션 주기
-// startBtn.addEventListener("click", () => {
-//   helpBtn.classList.remove("heart-beat");
-//   helpBtn.offsetWidth = helpBtn.offsetWidth;
-//   helpBtn.classList.add("heart-beat");
-// });
-
-// // 뒤로가기버튼 누르면 채팅화면 -> 시작화면
-// backBtn.addEventListener("click", () => {
-//   screenTransitionFade(chatScreen, startScreen);
-// });
-
-// // 퀴즈버튼 누르면 시작화면 -> 설명화면
-// quizBtn.addEventListener("click", () => {
-//   screenTransitionFade(startScreen, quizInformScreen);
-// });
-
 // 설명화면 -> 채팅화면
 quizStartBtn.addEventListener("click", () => {
   screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
@@ -63,4 +41,26 @@ quizStartBtn.addEventListener("click", () => {
 
 const focusInput = () => {
   inputText.focus();
+};
+
+// 팝업창 띄우기 함수
+const openPopup = (popup, animation, duration = 300) => {
+  popup.style.setProperty("--custom-duration", duration + "ms");
+  popup.classList.add(animation);
+  popup.classList.remove("hidden");
+  setTimeout(() => {
+    popup.classList.remove(animation);
+    popup.style.removeProperty("--custom-duration");
+  }, duration);
+};
+
+// 팝업창 닫기 함수
+const closePopup = (popup, animation, duration = 300) => {
+  popup.style.setProperty("--custom-duration", duration + "ms");
+  popup.classList.add(animation);
+  setTimeout(() => {
+    popup.classList.add("hidden");
+    popup.classList.remove(animation);
+    popup.style.removeProperty("--custom-duration");
+  }, duration);
 };
