@@ -42,7 +42,7 @@ const addChatMessage = (message, isUser) => {
   chatMessage.classList.add("chat-message");
   chatMessage.classList.add(isUser ? "user" : "assistant");
   if (isUser) {
-    chatMessage.innerHTML = `<span class="chat">${message}</span>`;
+    chatMessage.innerHTML = `<span class="chat"></span>`;
   } else {
     chatMessage.innerHTML = `<img
             class="profile-pic"
@@ -50,8 +50,16 @@ const addChatMessage = (message, isUser) => {
             alt="profile pic"
           />
           <span class="chat"
-            >${message}</span
+            ></span
           >`;
   }
   chatInterface.appendChild(chatMessage);
+  addChatText(message);
+};
+
+// message를 .chat 중 가장 마지막거에 넣기
+const addChatText = (message) => {
+  const chatTexts = document.querySelectorAll(".chat");
+  const lastChatText = chatTexts[chatTexts.length - 1];
+  lastChatText.innerText = message;
 };
