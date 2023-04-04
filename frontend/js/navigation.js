@@ -7,18 +7,30 @@ const chatScreen = document.querySelector(".chat-screen");
 const quizInformScreen = document.querySelector(".quiz-inform-screen");
 const helpBtn = document.querySelector(".help-btn");
 
-// 화면전환 fade in/out 효과, 사용법: 첫인자 -> 둘째인자
-const screenTransitionFade = (screen1, screen2) => {
+// 화면전환 fade in/out 효과, 사용법: 첫인자 -> 둘째인자 (옵셔널: 애니메이션 시간, screen2 켜졌을 때 실행할 함수)
+const screenTransitionFade = (
+  screen1,
+  screen2,
+  duration = 300,
+  runFunc = () => {}
+) => {
+  // css 애니메이션 시간도 적용
+  screen1.style.setProperty("--custom-duration", duration + "ms");
+  screen2.style.setProperty("--custom-duration", duration + "ms");
+  // 애니메이션
   screen1.classList.add("fade-out");
   setTimeout(() => {
     screen1.classList.add("hidden");
     screen1.classList.remove("fade-out");
     screen2.classList.add("fade-in");
     screen2.classList.remove("hidden");
+    runFunc();
     setTimeout(() => {
       screen2.classList.remove("fade-in");
-    }, 300);
-  }, 300);
+      screen1.style.removeProperty("--custom-duration");
+      screen2.style.removeProperty("--custom-duration");
+    }, duration);
+  }, duration);
   adjustScreenHeight(); // 요거는 빼줘도 됨. 만일을 대비해서 넣어준거
 };
 
@@ -46,5 +58,9 @@ const screenTransitionFade = (screen1, screen2) => {
 
 // 설명화면 -> 채팅화면
 quizStartBtn.addEventListener("click", () => {
-  screenTransitionFade(quizInformScreen, chatScreen);
+  screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
 });
+
+const focusInput = () => {
+  inputText.focus();
+};

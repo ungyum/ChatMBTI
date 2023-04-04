@@ -78,20 +78,28 @@
 }
 
 .correct-result-container p {
-  margin: 10px;
+  margin: 0px;
+  padding: 0 0;
 }
 .correct-result-container p:nth-child(1) {
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 500;
   margin-bottom: 0;
 }
 .correct-result-container p:nth-child(2) {
+  font-weight: 500;
+  font-size: 25px;
+}
+.correct-result-container .tries {
   font-weight: 600;
   font-size: 60px;
 }
 .correct-result-container p:nth-child(3) {
   font-size: 20px;
-  transform: translateY(-20px);
+  font-weight: 500;
+}
+.correct-result-container p:nth-child(4) {
+  font-size: 20px;
   font-weight: 500;
 }
 
@@ -99,7 +107,7 @@
   margin: 10px;
 }
 .wrong-result-container p:nth-child(1) {
-  font-size: 25px;
+  font-size: 40px;
   font-weight: 400;
   margin-bottom: 0;
 }

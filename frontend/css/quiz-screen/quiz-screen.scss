@@ -79,18 +79,23 @@
 .correct-result-container {
   p {
     // @include _.test;
-    margin: 10px;
+    margin: 0px;
+    padding: 0 0;
   }
 
   // 축하합니다
   p:nth-child(1) {
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 500;
     margin-bottom: 0;
   }
 
   // x번
   p:nth-child(2) {
+    font-weight: 500;
+    font-size: 25px;
+  }
+  .tries {
     font-weight: 600;
     font-size: 60px;
   }
@@ -98,7 +103,12 @@
   // 만에 성공
   p:nth-child(3) {
     font-size: 20px;
-    transform: translateY(-20px);
+    font-weight: 500;
+  }
+
+  // x 연속 정답
+  p:nth-child(4) {
+    font-size: 20px;
     font-weight: 500;
   }
 }
@@ -109,9 +119,9 @@
     margin: 10px;
   }
 
-  // "실망이야"
+  // 이모티콘
   p:nth-child(1) {
-    font-size: 25px;
+    font-size: 40px;
     font-weight: 400;
     margin-bottom: 0;
   }

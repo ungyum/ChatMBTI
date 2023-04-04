@@ -83,7 +83,7 @@
 }
 .fade-out {
   animation-name: fade-out;
-  animation-duration: 0.3s;
+  animation-duration: var(--custom-duration, 0.3s);
 }
 
 @keyframes fade-out {
@@ -96,7 +96,7 @@
 }
 .fade-in {
   animation-name: fade-in;
-  animation-duration: 0.3s;
+  animation-duration: var(--custom-duration, 0.3s);
 }
 
 @keyframes fade-in {

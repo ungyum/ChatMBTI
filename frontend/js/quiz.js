@@ -60,7 +60,6 @@ const initGame = () => {
   // 결과창 숨기기
   reslutPopup.classList.add("hidden");
 };
-
 // 랜덤 mbti 뽑기 함수
 const pickRandomMBTI = () => {
   // 0-15까지 랜덤넘버 만들어주고
@@ -69,6 +68,17 @@ const pickRandomMBTI = () => {
 };
 
 // mbtiBtnChat 누르면
+// 애니메이션
+for (let i = 0; i < mbtiBtnChat.length; i++) {
+  mbtiBtnChat[i].addEventListener("click", () => {
+    // 글자 바꿔주는거 확인용
+    mbtiBtnChat[i].classList.toggle("flipped");
+    // 애니메이션
+    mbtiBtnChat[i].classList.remove("flip");
+    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
+    mbtiBtnChat[i].classList.add("flip");
+  });
+}
 // 코드줄이기 용
 const mbtiBtnText = [
   { unflipped: "I", flipped: "E" },
@@ -76,15 +86,21 @@ const mbtiBtnText = [
   { unflipped: "T", flipped: "F" },
   { unflipped: "J", flipped: "P" },
 ];
+// 글자 바꿔주기
+const flipTime = 250; // 글자 바뀌는 시간
 for (let i = 0; i < mbtiBtnChat.length; i++) {
   mbtiBtnChat[i].addEventListener("click", () => {
     // 처음 누르면 default 지워주고
     mbtiBtnChat[i].classList.remove("default");
     // 처음 눌러서 default가 지워진 버튼이면 flipped가 없을 때 내부 span 태그에 I 넣어주고
     if (mbtiBtnChat[i].classList.contains("flipped")) {
-      mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].flipped;
+      setTimeout(() => {
+        mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].flipped;
+      }, flipTime);
     } else {
-      mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].unflipped;
+      setTimeout(() => {
+        mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].unflipped;
+      }, flipTime);
     }
   });
 }
@@ -153,14 +169,3 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
-
-for (let i = 0; i < mbtiBtnChat.length; i++) {
-  mbtiBtnChat[i].addEventListener("click", () => {
-    // 글자 바꿔주는거 확인용
-    mbtiBtnChat[i].classList.toggle("flipped");
-    // 애니메이션
-    mbtiBtnChat[i].classList.remove("flip");
-    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
-    mbtiBtnChat[i].classList.add("flip");
-  });
-}
