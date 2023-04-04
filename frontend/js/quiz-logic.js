@@ -1,9 +1,11 @@
 const ansValue = document.querySelector(".ans-value");
 const triesValue = document.querySelector(".tries-value");
+const winStreakValue = document.querySelector(".win-streak-value");
+const higestScoreValue = document.querySelector(".highest-score-value");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
-let tries;
+let winStreak;
 
 // 백엔드용
 const mbtiList = [
@@ -54,6 +56,10 @@ const initGame = () => {
   tries = 0;
   // 결과창 숨기기
   reslutPopup.classList.add("hidden");
+  // mbtiBtnChat에 전부 flipped 넣어주기
+  for (let i = 0; i < mbtiBtnChat.length; i++) {
+    mbtiBtnChat[i].classList.add("flipped");
+  }
 };
 // 랜덤 mbti 뽑기 함수
 const pickRandomMBTI = () => {
@@ -72,9 +78,20 @@ ansBtn.addEventListener("click", () => {
   }
   // guess가 정답이면
   if (parseInt(guess.join(""), 2) === ans) {
-    showResultCorrect();
+    // 첫게임이면 0으로 설정
+    if (winStreak === undefined) {
+      winStreak = 0;
+    }
+    winStreak++;
+    showResultCorrect(winStreak);
   } else {
-    showResultWrong();
+    if (winStreak === undefined) {
+      showResultWrong(0);
+    } else {
+      const highestScore = winStreak;
+      winStreak = 0;
+      showResultWrong(highestScore);
+    }
   }
 });
 
@@ -99,17 +116,14 @@ const checkDefault = () => {
   }
 };
 
-// 채팅할때마다 tries 증가
-sendBtn.addEventListener("click", () => {
-  tries++;
-});
-
 // 결과창 @@@@@@@@@@@@@@@
 
 // 맞았을 때 결과창
-const showResultCorrect = () => {
+const showResultCorrect = (winStreak) => {
   // tries 넣어주고
   triesValue.innerText = getTries();
+  // winStreak 넣어주고
+  winStreakValue.innerText = winStreak;
   // 창 띄우기
   correctResultContainer.classList.remove("hidden");
   wrongResultContainer.classList.add("hidden");
@@ -117,9 +131,11 @@ const showResultCorrect = () => {
 };
 
 // 틀렸을 때 결과창
-const showResultWrong = () => {
+const showResultWrong = (highestScore) => {
   // 정답 넣어주고
   ansValue.innerText = getSecret();
+  // 최고기록 넣어주고
+  higestScoreValue.innerText = highestScore;
   // 창 띄우기
   correctResultContainer.classList.add("hidden");
   wrongResultContainer.classList.remove("hidden");
