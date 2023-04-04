@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,6 +35,7 @@
         <span class="material-symbols-outlined help-btn heart-beat">
           help
         </span>
+        <!-- help 팝업 -->
         <div class="help-popup hidden">
           <p>mbti 퀴즈</p>
           <p>설명</p>
@@ -42,6 +43,7 @@
       </div>
     </header>
     <div class="result-popup hidden">
+      <!-- 성공 팝업 -->
       <div class="result-container correct-result-container">
         <p>축하합니다!🤩</p>
         <p><span class="tries-value">0</span>번</p>
@@ -49,6 +51,7 @@
         <p><span class="win-streak-value">x</span>연속 정답</p>
         <button class="regame-btn">다음 문제로</button>
       </div>
+      <!-- 실패 팝업 -->
       <div class="result-container wrong-result-container">
         <p>😥</p>
         <p>정답은 <span class="ans-value">0000</span>입니다.</p>
@@ -57,7 +60,7 @@
         <button class="regame-btn">다시하기</button>
       </div>
     </div>
-    <!-- 퀴즈 설명 -->
+    <!-- 퀴즈 설명 페이지 -->
     <div class="quiz-inform-screen">
       <p>게임 설명: 어쩌구 저쩌구</p>
       <button class="quiz-start-btn">START</button>
