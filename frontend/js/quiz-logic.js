@@ -31,11 +31,6 @@ const mbtiList = [
   "enfp",
 ];
 
-// 시작화면에서 퀴즈버튼 눌렀을 때
-quizStartBtn.addEventListener("click", () => {
-  initGame();
-});
-
 // 새 게임 만들기
 const initGame = () => {
   // 채팅창 지워주고
@@ -68,6 +63,76 @@ const pickRandomMBTI = () => {
   ans = randomNum;
 };
 
+// 결정하기 버튼 부품들
+const getGuess = () => {
+  for (let i = 0; i < 4; i++) {
+    if (!mbtiBtnChat[i].classList.contains("default")) {
+      // flipped 여부 guess 배열에 넣어주기
+      if (mbtiBtnChat[i].classList.contains("flipped")) {
+        guess[i] = 1;
+      } else {
+        guess[i] = 0;
+      }
+    }
+  }
+};
+const checkDefault = () => {
+  for (let i = 0; i < 4; i++) {
+    if (mbtiBtnChat[i].classList.contains("default")) {
+      return true;
+    }
+  }
+};
+
+// 맞았을 때 결과창
+const showResultCorrect = (winStreak) => {
+  // tries 넣어주고
+  triesValue.innerText = getTries();
+  // winStreak 넣어주고
+  winStreakValue.innerText = winStreak;
+  // 창 띄우기
+  correctResultContainer.classList.remove("hidden");
+  wrongResultContainer.classList.add("hidden");
+  anim.openPopup(reslutPopup, "fade-in", 700);
+};
+// 틀렸을 때 결과창
+const showResultWrong = (highestScore) => {
+  // 정답 넣어주고
+  ansValue.innerText = getSecret();
+  // 최고기록 넣어주고
+  higestScoreValue.innerText = highestScore;
+  // 창 띄우기
+  correctResultContainer.classList.add("hidden");
+  wrongResultContainer.classList.remove("hidden");
+  anim.openPopup(reslutPopup, "fade-in", 700);
+};
+
+// ans로부터 mbti 구하기
+const getSecret = () => {
+  const m = [];
+  const a = ans.toString(2).padStart(4, "0");
+  for (let i = 0; i < 4; i++) {
+    if (a[i] === "0") {
+      m.push(mbtiBtnText[i].unflipped);
+    } else {
+      m.push(mbtiBtnText[i].flipped);
+    }
+  }
+  return m.join("");
+};
+
+// 보낸 챗 갯수 구하기: chat-interface에 들어있는 chat-message 중 user 클래스가 있는 것들의 갯수
+const getTries = () => {
+  return chatInterface.querySelectorAll(".user").length;
+};
+
+// 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+// 시작화면에서 퀴즈버튼 눌렀을 때
+quizStartBtn.addEventListener("click", () => {
+  initGame();
+});
+
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
   getGuess();
@@ -95,53 +160,6 @@ ansBtn.addEventListener("click", () => {
   }
 });
 
-// 결정하기 버튼 부품들
-const getGuess = () => {
-  for (let i = 0; i < 4; i++) {
-    if (!mbtiBtnChat[i].classList.contains("default")) {
-      // flipped 여부 guess 배열에 넣어주기
-      if (mbtiBtnChat[i].classList.contains("flipped")) {
-        guess[i] = 1;
-      } else {
-        guess[i] = 0;
-      }
-    }
-  }
-};
-const checkDefault = () => {
-  for (let i = 0; i < 4; i++) {
-    if (mbtiBtnChat[i].classList.contains("default")) {
-      return true;
-    }
-  }
-};
-
-// 결과창 @@@@@@@@@@@@@@@
-
-// 맞았을 때 결과창
-const showResultCorrect = (winStreak) => {
-  // tries 넣어주고
-  triesValue.innerText = getTries();
-  // winStreak 넣어주고
-  winStreakValue.innerText = winStreak;
-  // 창 띄우기
-  correctResultContainer.classList.remove("hidden");
-  wrongResultContainer.classList.add("hidden");
-  openPopup(reslutPopup, "fade-in", 700);
-};
-
-// 틀렸을 때 결과창
-const showResultWrong = (highestScore) => {
-  // 정답 넣어주고
-  ansValue.innerText = getSecret();
-  // 최고기록 넣어주고
-  higestScoreValue.innerText = highestScore;
-  // 창 띄우기
-  correctResultContainer.classList.add("hidden");
-  wrongResultContainer.classList.remove("hidden");
-  openPopup(reslutPopup, "fade-in", 700);
-};
-
 // 다시하기 버튼 눌렀을 때
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", () => {
@@ -150,29 +168,3 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
-
-// ans로부터 mbti 구하기
-const getSecret = () => {
-  const m = [];
-  const a = ans.toString(2).padStart(4, "0");
-  for (let i = 0; i < 4; i++) {
-    if (a[i] === "0") {
-      m.push(mbtiBtnText[i].unflipped);
-    } else {
-      m.push(mbtiBtnText[i].flipped);
-    }
-  }
-  return m.join("");
-};
-
-// const chatInterface = document.querySelector(".chat-interface");
-// const sendBtn = document.querySelector(".send-btn");
-// const inputText = document.querySelector(".input-text");
-// const chatScrollbox = document.querySelector(".chat-scrollbox");
-// const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
-// const ansBtn = document.querySelector(".ans-btn");
-// const quizUI = document.querySelector(".quiz-ui");
-// 보낸 챗 갯수 구하기: chat-interface에 들어있는 chat-message 중 user 클래스가 있는 것들의 갯수
-const getTries = () => {
-  return chatInterface.querySelectorAll(".user").length;
-};

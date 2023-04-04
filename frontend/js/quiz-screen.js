@@ -8,7 +8,7 @@ const wrongResultContainer = document.querySelector(".wrong-result-container");
 
 // 설명화면 -> 채팅화면 애니메이션
 quizStartBtn.addEventListener("click", () => {
-  screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
+  anim.screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
 });
 // 부품
 const focusInput = () => {
