@@ -1,11 +1,8 @@
-// const startBtn = document.querySelector(".start-btn");
-// const backBtn = document.querySelector(".back-btn");
-// const quizBtn = document.querySelector(".quiz-btn");
 const quizStartBtn = document.querySelector(".quiz-start-btn");
-// const startScreen = document.querySelector(".start-screen");
 const chatScreen = document.querySelector(".chat-screen");
 const quizInformScreen = document.querySelector(".quiz-inform-screen");
 const helpBtn = document.querySelector(".help-btn");
+const helpPopup = document.querySelector(".help-popup");
 
 // 화면전환 fade in/out 효과, 사용법: 첫인자 -> 둘째인자 (옵셔널: 애니메이션 시간, screen2 켜졌을 때 실행할 함수)
 const screenTransitionFade = (
@@ -34,15 +31,6 @@ const screenTransitionFade = (
   adjustScreenHeight(); // 요거는 빼줘도 됨. 만일을 대비해서 넣어준거
 };
 
-// 설명화면 -> 채팅화면
-quizStartBtn.addEventListener("click", () => {
-  screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
-});
-
-const focusInput = () => {
-  inputText.focus();
-};
-
 // 팝업창 띄우기 함수
 const openPopup = (popup, animation, duration = 300) => {
   popup.style.setProperty("--custom-duration", duration + "ms");
@@ -64,3 +52,12 @@ const closePopup = (popup, animation, duration = 300) => {
     popup.style.removeProperty("--custom-duration");
   }, duration);
 };
+
+// help-btn 누르면 팝업창 띄우기
+helpBtn.addEventListener("click", () => {
+  if (helpPopup.classList.contains("hidden")) {
+    openPopup(helpPopup, "fade-in");
+  } else {
+    closePopup(helpPopup, "fade-out");
+  }
+});

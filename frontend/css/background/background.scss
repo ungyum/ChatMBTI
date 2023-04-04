@@ -1,5 +1,7 @@
 @use "../general/foundation" as _;
 
+$banner-height: 53px;
+
 // 상단 배너
 .banner {
   width: 100%;
@@ -7,7 +9,6 @@
   @include _.background;
   justify-content: space-between;
   padding: 0 0 0 20px;
-  $banner-height: 53px;
   height: $banner-height;
   font-size: 1.3rem;
   color: _.$font-color;
@@ -18,6 +19,7 @@
     padding-right: 7px;
   }
 
+  // 도움 버튼
   .help-btn {
     $font-size: 38px;
     margin-right: calc(5px + ($banner-height - $font-size) / 2);
@@ -59,4 +61,20 @@
 // 버튼색
 button {
   color: inherit;
+}
+
+// 도움 팝업
+.help-popup {
+  @include _.test;
+  @include _.flex-column;
+  position: absolute;
+  top: $banner-height;
+  right: 0;
+  background-color: _.$background-color;
+  z-index: 2;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }

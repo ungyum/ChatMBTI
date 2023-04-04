@@ -34,6 +34,15 @@ const mbtiList = [
   "enfp",
 ];
 
+// 설명화면 -> 채팅화면 애니메이션
+quizStartBtn.addEventListener("click", () => {
+  screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
+});
+
+const focusInput = () => {
+  inputText.focus();
+};
+
 // 시작화면에서 퀴즈버튼 눌렀을 때
 quizStartBtn.addEventListener("click", () => {
   initGame();

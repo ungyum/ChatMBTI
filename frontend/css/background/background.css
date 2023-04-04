@@ -52,4 +52,21 @@
 }
 button {
   color: inherit;
+}
+
+.help-popup {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 53px;
+  right: 0;
+  background-color: #fcfff7;
+  z-index: 2;
+}
+.help-popup p {
+  margin: 0;
+  padding: 0;
 }/*# sourceMappingURL=background.css.map */
