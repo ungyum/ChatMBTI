@@ -1,5 +1,5 @@
 const mbtiBtnChat = document.querySelectorAll(".mbti-btn-chat");
-const reslutPopup = document.querySelector(".result-popup");
+const resultPopup = document.querySelector(".result-popup");
 const regameBtns = document.querySelectorAll(".regame-btn");
 const correctResultContainer = document.querySelector(
   ".correct-result-container"

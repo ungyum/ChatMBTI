@@ -50,7 +50,7 @@ const initGame = () => {
   // tries 초기화
   tries = 0;
   // 결과창 숨기기
-  reslutPopup.classList.add("hidden");
+  resultPopup.classList.add("hidden");
   // mbtiBtnChat에 전부 flipped 넣어주기
   for (let i = 0; i < mbtiBtnChat.length; i++) {
     mbtiBtnChat[i].classList.add("flipped");
@@ -93,7 +93,7 @@ const showResultCorrect = (winStreak) => {
   // 창 띄우기
   correctResultContainer.classList.remove("hidden");
   wrongResultContainer.classList.add("hidden");
-  anim.openPopup(reslutPopup, "fade-in", 700);
+  anim.openPopup(resultPopup, "fade-in", 700);
 };
 // 틀렸을 때 결과창
 const showResultWrong = (highestScore) => {
@@ -104,7 +104,7 @@ const showResultWrong = (highestScore) => {
   // 창 띄우기
   correctResultContainer.classList.add("hidden");
   wrongResultContainer.classList.remove("hidden");
-  anim.openPopup(reslutPopup, "fade-in", 700);
+  anim.openPopup(resultPopup, "fade-in", 700);
 };
 
 // ans로부터 mbti 구하기
@@ -164,7 +164,7 @@ ansBtn.addEventListener("click", () => {
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", () => {
     // 팝업 숨기고
-    reslutPopup.classList.add("hidden");
+    resultPopup.classList.add("hidden");
     initGame();
   });
 });

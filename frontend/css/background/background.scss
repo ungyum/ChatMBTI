@@ -24,6 +24,12 @@ $banner-height: 53px;
     $font-size: 38px;
     margin-right: calc(5px + ($banner-height - $font-size) / 2);
     font-size: $font-size;
+    user-select: none;
+    transition: 0.3s;
+  }
+
+  .help-btn:hover {
+    transform: scale(1.3);
   }
 }
 
