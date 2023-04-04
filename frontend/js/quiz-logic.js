@@ -1,10 +1,5 @@
-const mbtiBtnChat = document.querySelectorAll(".mbti-btn-chat");
-const reslutPopup = document.querySelector(".result-popup");
-const regameBtns = document.querySelectorAll(".regame-btn");
-const correctResultContainer = document.querySelector(
-  ".correct-result-container"
-);
-const wrongResultContainer = document.querySelector(".wrong-result-container");
+const ansValue = document.querySelector(".ans-value");
+const triesValue = document.querySelector(".tries-value");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
@@ -33,15 +28,6 @@ const mbtiList = [
   "enfj",
   "enfp",
 ];
-
-// 설명화면 -> 채팅화면 애니메이션
-quizStartBtn.addEventListener("click", () => {
-  screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
-});
-
-const focusInput = () => {
-  inputText.focus();
-};
 
 // 시작화면에서 퀴즈버튼 눌렀을 때
 quizStartBtn.addEventListener("click", () => {
@@ -75,44 +61,6 @@ const pickRandomMBTI = () => {
   const randomNum = Math.floor(Math.random() * 16);
   ans = randomNum;
 };
-
-// mbtiBtnChat 누르면
-// 애니메이션
-for (let i = 0; i < mbtiBtnChat.length; i++) {
-  mbtiBtnChat[i].addEventListener("click", () => {
-    // 글자 바꿔주는거 확인용
-    mbtiBtnChat[i].classList.toggle("flipped");
-    // 애니메이션
-    mbtiBtnChat[i].classList.remove("flip");
-    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
-    mbtiBtnChat[i].classList.add("flip");
-  });
-}
-// 코드줄이기 용
-const mbtiBtnText = [
-  { unflipped: "I", flipped: "E" },
-  { unflipped: "S", flipped: "N" },
-  { unflipped: "T", flipped: "F" },
-  { unflipped: "J", flipped: "P" },
-];
-// 글자 바꿔주기
-const flipTime = 250; // 글자 바뀌는 시간
-for (let i = 0; i < mbtiBtnChat.length; i++) {
-  mbtiBtnChat[i].addEventListener("click", () => {
-    // 처음 누르면 default 지워주고
-    mbtiBtnChat[i].classList.remove("default");
-    // 처음 눌러서 default가 지워진 버튼이면 flipped가 없을 때 내부 span 태그에 I 넣어주고
-    if (mbtiBtnChat[i].classList.contains("flipped")) {
-      setTimeout(() => {
-        mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].flipped;
-      }, flipTime);
-    } else {
-      setTimeout(() => {
-        mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].unflipped;
-      }, flipTime);
-    }
-  });
-}
 
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
@@ -156,8 +104,13 @@ sendBtn.addEventListener("click", () => {
   tries++;
 });
 
+// 결과창 @@@@@@@@@@@@@@@
+
 // 맞았을 때 결과창
 const showResultCorrect = () => {
+  // tries 넣어주고
+  triesValue.innerText = getTries();
+  // 창 띄우기
   correctResultContainer.classList.remove("hidden");
   wrongResultContainer.classList.add("hidden");
   openPopup(reslutPopup, "fade-in", 700);
@@ -165,6 +118,9 @@ const showResultCorrect = () => {
 
 // 틀렸을 때 결과창
 const showResultWrong = () => {
+  // 정답 넣어주고
+  ansValue.innerText = getSecret();
+  // 창 띄우기
   correctResultContainer.classList.add("hidden");
   wrongResultContainer.classList.remove("hidden");
   openPopup(reslutPopup, "fade-in", 700);
@@ -178,3 +134,29 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
+
+// ans로부터 mbti 구하기
+const getSecret = () => {
+  const m = [];
+  const a = ans.toString(2).padStart(4, "0");
+  for (let i = 0; i < 4; i++) {
+    if (a[i] === "0") {
+      m.push(mbtiBtnText[i].unflipped);
+    } else {
+      m.push(mbtiBtnText[i].flipped);
+    }
+  }
+  return m.join("");
+};
+
+// const chatInterface = document.querySelector(".chat-interface");
+// const sendBtn = document.querySelector(".send-btn");
+// const inputText = document.querySelector(".input-text");
+// const chatScrollbox = document.querySelector(".chat-scrollbox");
+// const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
+// const ansBtn = document.querySelector(".ans-btn");
+// const quizUI = document.querySelector(".quiz-ui");
+// 보낸 챗 갯수 구하기: chat-interface에 들어있는 chat-message 중 user 클래스가 있는 것들의 갯수
+const getTries = () => {
+  return chatInterface.querySelectorAll(".user").length;
+};
