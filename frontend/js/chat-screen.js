@@ -6,6 +6,15 @@ const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
 const ansBtn = document.querySelector(".ans-btn");
 const quizUI = document.querySelector(".quiz-ui");
 
+
+//스크롤 이벤트
+chatScrollbox.addEventListener("scroll", (event) => {
+  console.log(`scrollTop: ${chatScrollbox.scrollTop}`);
+});
+
+
+
+
 inputText.focus();
 
 // 보내기 버튼
@@ -18,6 +27,7 @@ sendBtn.addEventListener("click", (e) => {
   let message = inputText.value;
   inputText.value = "";
   addChatMessage(message, true);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
 });
 // 엔터키로도 보내기
 inputText.addEventListener("keyup", (e) => {
@@ -31,9 +41,11 @@ const assistantBtn = document.querySelector(".assistant-btn");
 const userBtn = document.querySelector(".user-btn");
 assistantBtn.addEventListener("click", () => {
   addChatMessage("Hello, how can I help you?", false);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
 });
 userBtn.addEventListener("click", () => {
   addChatMessage("I need help with my order", true);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
 });
 
 // 메시지 넣기 함수, message: 메시지내용, isUser: 사용자인지 아닌지
