@@ -74,7 +74,7 @@ const displayLoadingIcon = () => {
   return loadingIcon;
 };
 
-const setChatHistory = (user, assistant) => {
+const appendChatHistory = (user, assistant) => {
   chatHistory.push({ role: "user", content: user });
   chatHistory.push({ role: "assistant", content: assistant });
 };
@@ -103,9 +103,9 @@ sendBtn.addEventListener("click", async (e) => {
     const assistantReply = await api.postChat(sanitizedUserInput, chatHistory); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
     chatInterface.removeChild(loadingIcon);
     displayChat(assistantReply, false);
-    setChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
+    appendChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
   } catch {
-    displayFailedPopup(); // 화면에 팝업 띄우기. 팝업 안에는 "챗봇이 죽었어요ㅠㅠ"라고 적혀있음
+    displayFailedPopup(); // 화면에 3초간 팝업 띄우기. 팝업 안에는 "챗봇이 죽었어요ㅠㅠ"라고 적혀있음
     chatInterface.removeChild(loadingIcon);
   }
 });
