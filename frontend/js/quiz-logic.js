@@ -47,10 +47,6 @@ const initGame = () => {
   for (let i = 0; i < mbtiBtnChat.length; i++) {
     mbtiBtnChat[i].children[0].innerText = "?";
   }
-  // tries 초기화
-  tries = 0;
-  // 결과창 숨기기
-  resultPopup.classList.add("hidden");
   // mbtiBtnChat에 전부 flipped 넣어주기
   for (let i = 0; i < mbtiBtnChat.length; i++) {
     mbtiBtnChat[i].classList.add("flipped");
@@ -64,7 +60,7 @@ const pickRandomMBTI = () => {
 };
 
 // 결정하기 버튼 부품들
-const getGuess = () => {
+const setGuessFromBtns = () => {
   for (let i = 0; i < 4; i++) {
     if (!mbtiBtnChat[i].classList.contains("default")) {
       // flipped 여부 guess 배열에 넣어주기
@@ -76,7 +72,7 @@ const getGuess = () => {
     }
   }
 };
-const checkDefault = () => {
+const containsDefault = () => {
   for (let i = 0; i < 4; i++) {
     if (mbtiBtnChat[i].classList.contains("default")) {
       return true;
@@ -126,6 +122,27 @@ const getTries = () => {
   return chatInterface.querySelectorAll(".user").length;
 };
 
+const isGuessCorrect = () => {
+  return parseInt(guess.join(""), 2) === ans;
+};
+
+// 연승 기록 증가
+const incrementWinStreak = () => {
+  // 첫게임이면 0으로 설정
+  if (winStreak === undefined) {
+    winStreak = 0;
+  }
+  winStreak++;
+};
+// 최고기록 가져오기
+const getHighestScore = () => {
+  if (winStreak === undefined) {
+    return 0;
+  } else {
+    return winStreak;
+  }
+};
+
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 // 시작화면에서 퀴즈버튼 눌렀을 때
@@ -135,28 +152,22 @@ quizStartBtn.addEventListener("click", () => {
 
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
-  getGuess();
-  // default 있으면 경고창 띄우고
-  if (checkDefault()) {
+  // guess 값 가져오고
+  setGuessFromBtns();
+  // default 있으면 경고창 띄우고 리턴
+  if (containsDefault()) {
     alert("모든 문항을 선택해주세요!");
     return;
   }
   // guess가 정답이면
-  if (parseInt(guess.join(""), 2) === ans) {
-    // 첫게임이면 0으로 설정
-    if (winStreak === undefined) {
-      winStreak = 0;
-    }
-    winStreak++;
+  if (isGuessCorrect()) {
+    incrementWinStreak();
     showResultCorrect(winStreak);
   } else {
-    if (winStreak === undefined) {
-      showResultWrong(0);
-    } else {
-      const highestScore = winStreak;
-      winStreak = 0;
-      showResultWrong(highestScore);
-    }
+    // 최고기록 가져온 후 winStreak 초기화 후 결과창 띄우기
+    const highestScore = getHighestScore();
+    winStreak = 0;
+    showResultWrong(highestScore);
   }
 });
 
@@ -164,7 +175,7 @@ ansBtn.addEventListener("click", () => {
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", () => {
     // 팝업 숨기고
-    resultPopup.classList.add("hidden");
+    anim.closePopup(resultPopup, "fade-out", 700);
     initGame();
   });
 });
