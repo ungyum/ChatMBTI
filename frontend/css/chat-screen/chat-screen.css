@@ -76,6 +76,12 @@
   padding: 5px 15px;
   font-size: 18px;
 }
+.chat-interface .loading-icon {
+  align-self: flex-start;
+  margin: 20px 0 0 20px;
+  font-size: 30px;
+  color: #ccd6a6;
+}
 .chat-interface .assistant {
   justify-content: flex-start;
 }

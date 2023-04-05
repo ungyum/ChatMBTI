@@ -27,17 +27,27 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // openAI API request
-const apiCall = async (userInput) => {
+const apiCall = async (userInput, chatHistory) => {
+  const messages = [
+    {
+      role: "system",
+      content: "You are acting as my friend. Your name is James.",
+    },
+    // { role: "user", content: process.env.PROMPT_TEST },
+    // { role: "assistant", content: "준비됐어!" },
+    // { role: "user", content: "너 이름이 뭐야?" },
+    // { role: "assistant", content: "나는 제임스야 ㅋㅋㅋ" },
+    // { role: "user", content: userInput },
+  ];
+  for (let i = 0; i < chatHistory.length; i++) {
+    messages.push(chatHistory[i]);
+  }
+  messages.push({ role: "user", content: userInput });
+  console.log(messages); // 이거는 지워도 됨
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [
-      { role: "system", content: "You are acting as my friend James." },
-      { role: "user", content: process.env.PROMPT_TEST },
-      { role: "assistant", content: "준비됐어!" },
-      { role: "user", content: "너 이름이 뭐야?" },
-      { role: "assistant", content: "나는 제임스야 ㅋㅋㅋ" },
-      { role: "user", content: userInput },
-    ],
+    max_tokens: 5, // test 테스트용
+    messages: messages,
   });
   console.log(completion.data.choices[0].message); // 이거는 지워도 됨
   return completion.data.choices[0].message["content"];
@@ -45,8 +55,8 @@ const apiCall = async (userInput) => {
 
 // post 받기
 app.post("/api", async (req, res) => {
-  const { userInput } = req.body;
-  const chat = await apiCall(userInput);
+  const { userInput, chatHistory } = req.body;
+  const chat = await apiCall(userInput, chatHistory);
   res.json({ content: chat });
 });
 

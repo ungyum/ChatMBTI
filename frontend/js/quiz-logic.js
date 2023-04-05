@@ -33,8 +33,8 @@ const mbtiList = [
 
 // 새 게임 만들기
 const initGame = () => {
-  // 채팅창 지워주고
-  chatInterface.innerHTML = "";
+  // 채팅 리셋해주고
+  initChat();
   // 랜덤 mbti 골라주고
   pickRandomMBTI();
   // default 넣어주고

@@ -75,6 +75,15 @@
     }
   }
 
+  // 로딩 아이콘
+  .loading-icon {
+    // loading-icon은 flex-direction: column 안에 있는 element야. 이걸 왼쪽으로 붙여줘
+    align-self: flex-start;
+    margin: 20px 0 0 20px;
+    font-size: 30px;
+    color: _.$base-color;
+  }
+
   .assistant {
     justify-content: flex-start;
 
