@@ -27,14 +27,28 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // openAI API request
-const apiCall = async () => {
+const apiCall = async (userInput) => {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: "Hello world" }],
+    messages: [
+      { role: "system", content: "You are acting as my friend James." },
+      { role: "user", content: process.env.PROMPT_TEST },
+      { role: "assistant", content: "준비됐어!" },
+      { role: "user", content: "너 이름이 뭐야?" },
+      { role: "assistant", content: "나는 제임스야 ㅋㅋㅋ" },
+      { role: "user", content: userInput },
+    ],
   });
   console.log(completion.data.choices[0].message); // 이거는 지워도 됨
-  return completion.data.choices[0].message;
+  return completion.data.choices[0].message["content"];
 };
+
+// post 받기
+app.post("/api", async (req, res) => {
+  const { userInput } = req.body;
+  const chat = await apiCall(userInput);
+  res.json({ content: chat });
+});
 
 // 서버 열기
 app.listen(4000, () => {
