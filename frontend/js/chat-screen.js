@@ -21,7 +21,7 @@ const initChat = () => {
 };
 
 // 메시지 넣기 함수, message: 메시지내용, isUser: 사용자인지 아닌지
-const addChatMessage = (message, isUser) => {
+const displayChat = (message, isUser) => {
   const chatMessage = document.createElement("div");
   chatMessage.classList.add("chat-message");
   chatMessage.classList.add(isUser ? "user" : "assistant");
@@ -48,39 +48,66 @@ const addChatText = (message) => {
   lastChatText.innerText = message;
 };
 
+const getUserInput = () => {
+  // 입력값 청소해주기
+  const messageDirty = inputText.value;
+  const messageClean = DOMPurify.sanitize(messageDirty);
+  inputText.value = "";
+  return messageClean;
+};
+
+const displayFailedPopup = () => {
+  const popup = document.createElement("div");
+  popup.classList.add("popup");
+  popup.innerText = "챗봇이 죽었어요ㅠㅠ";
+  chatInterface.appendChild(popup);
+  setTimeout(() => {
+    chatInterface.removeChild(popup);
+  }, 3000);
+};
+
+const displayLoadingIcon = () => {
+  const loadingIcon = document.createElement("i");
+  loadingIcon.classList.add("loading-icon", "fas", "fa-spinner", "fa-spin");
+  chatInterface.appendChild(loadingIcon);
+  scrollChat();
+  return loadingIcon;
+};
+
+const setChatHistory = (user, assistant) => {
+  chatHistory.push({ role: "user", content: user });
+  chatHistory.push({ role: "assistant", content: assistant });
+};
+
 // 시작 @@@@@@@@@@@@@@@@
 initChat();
 inputText.focus();
 
 // 보내기 버튼
 sendBtn.addEventListener("click", async (e) => {
+  // UX 설정
   e.preventDefault();
   inputText.focus();
+
   // 입력값 비정상이면 입력 막기
   if (inputText.value === "") {
     return;
   }
-  // 입력값 정상이면...
-  // 입력값 청소해주고
-  const messageDirty = inputText.value;
-  const messageClean = DOMPurify.sanitize(messageDirty);
-  inputText.value = "";
-  // 챗박스 넣어주고
-  addChatMessage(messageClean, true);
 
-  // 챗봇 채팅을 postChat 함수로 보내고, 답이 올때까지 화면에 로딩중 아이콘 표시, 답이 오면 로딩중 아이콘 지우고, addChatMessage 함수로 화면에 챗봇 채팅 넣어주기
-  const loadingIcon = document.createElement("i");
-  loadingIcon.classList.add("loading-icon", "fas", "fa-spinner", "fa-spin");
-  chatInterface.appendChild(loadingIcon);
-  scrollChat();
+  // 입력값 정상이면...
+  const sanitizedUserInput = getUserInput();
+  displayChat(sanitizedUserInput, true);
+  const loadingIcon = displayLoadingIcon();
   // api 호출
-  const assistantChat = await api.postChat(messageClean, chatHistory);
-  // 화면 표시
-  chatInterface.removeChild(loadingIcon);
-  addChatMessage(assistantChat, false);
-  // 히스토리 남겨주고: user history는 반드시 api 호출 후에 남겨줘야됨
-  chatHistory.push({ role: "user", content: messageClean });
-  chatHistory.push({ role: "assistant", content: assistantChat });
+  try {
+    const assistantReply = await api.postChat(sanitizedUserInput, chatHistory); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
+    chatInterface.removeChild(loadingIcon);
+    displayChat(assistantReply, false);
+    setChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
+  } catch {
+    displayFailedPopup(); // 화면에 팝업 띄우기. 팝업 안에는 "챗봇이 죽었어요ㅠㅠ"라고 적혀있음
+    chatInterface.removeChild(loadingIcon);
+  }
 });
 
 // 엔터키로도 보내기

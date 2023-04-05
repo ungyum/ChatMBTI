@@ -29,15 +29,11 @@ const openai = new OpenAIApi(configuration);
 // openAI API request
 const apiCall = async (userInput, chatHistory) => {
   const messages = [
-    {
-      role: "system",
-      content: "You are acting as my friend. Your name is James.",
-    },
+    { role: "system", content: "You are acting as my friend" },
     // { role: "user", content: process.env.PROMPT_TEST },
     // { role: "assistant", content: "준비됐어!" },
     // { role: "user", content: "너 이름이 뭐야?" },
     // { role: "assistant", content: "나는 제임스야 ㅋㅋㅋ" },
-    // { role: "user", content: userInput },
   ];
   for (let i = 0; i < chatHistory.length; i++) {
     messages.push(chatHistory[i]);
