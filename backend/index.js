@@ -47,6 +47,7 @@ const apiCall = async (userInput, chatHistory, mbti) => {
   // openAI API 요청
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
+    temperature: 0.7,
     max_tokens: 5, // test 테스트용
     messages: messages,
   });

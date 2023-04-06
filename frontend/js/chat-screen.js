@@ -98,6 +98,8 @@ sendBtn.addEventListener("click", async (e) => {
 
   // 입력값 정상이면...
   const sanitizedUserInput = getUserInput();
+  // inputText의 placeholder를 getChatRecom()의 리턴값으로 으로 바꿔주기
+  inputText.placeholder = getChatRecom();
   displayChat(sanitizedUserInput, true);
   const loadingIcon = displayLoadingIcon();
   // api 호출
@@ -135,3 +137,31 @@ userBtn.addEventListener("click", () => {
   displayChat("I need help with my order", true);
   chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
 });
+
+// 챗 추천 리스트
+const chatRecom = [
+  "안녕, 만나서 반가워!",
+  "너가 제일 좋아하는 색깔이 뭐야?",
+  "우리 동네에 있는 맛집 좀 추천해줘.",
+  "오늘 날씨 어때?",
+  "너 이번 주말에 뭐해?",
+  "지금 할 것 좀 추천해줘.",
+  "인간이 느끼는 감정이란 뭘까?",
+  "인공지능에 대해서 어떻게 생각해?",
+  "너가 가장 좋아하는 책이 뭐야?",
+  "심심한데 드립 하나만 쳐줘.",
+  "너는 심심할때 주로 뭐해?",
+  "인공지능의 지능과 사람의 지능 중에 어느 것이 더 높아?",
+  "인공지능이 자아를 가질 수 있다던데, 진짜야?",
+  "뉴욕에 있는 창문의 개수를 다 세면 대략 몇개일까?",
+  "문의 개수와 바퀴의 개수 중 뭐가 더 많을까?",
+  "지구가 둥근 걸 증명해봐.",
+  "내가 지금 생각하고 있는 걸 맞춰봐.",
+  "인생은 공평해 불공평해?",
+];
+
+// 랜덤 챗 추천 가져와서 리턴하는 함수
+const getChatRecom = () => {
+  const randomIdx = Math.floor(Math.random() * chatRecom.length);
+  return chatRecom[randomIdx];
+};
