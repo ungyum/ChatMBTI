@@ -1,3 +1,12 @@
+.fa-chevron-left {
+  position: absolute;
+  font-size: 35px;
+  padding: 10px 17px;
+  top: 53px;
+  left: 0;
+  z-index: 10;
+}
+
 .chat-screen {
   display: flex;
   justify-content: center;
@@ -7,13 +16,6 @@
   position: relative;
   color: #494949;
   height: 100%;
-}
-.chat-screen .fa-chevron-left {
-  position: absolute;
-  font-size: 35px;
-  padding: 10px 17px;
-  top: 0;
-  left: 0;
 }
 .chat-screen .chat-input {
   width: 90%;

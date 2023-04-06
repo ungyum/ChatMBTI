@@ -8,12 +8,12 @@
   justify-content: space-between;
   padding: 0 0 0 20px;
   height: 53px;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: #494949;
   font-weight: 100;
 }
 .banner .banner-bold {
-  font-weight: 700;
+  font-weight: 600;
   padding-right: 7px;
 }
 .banner .help-btn {
