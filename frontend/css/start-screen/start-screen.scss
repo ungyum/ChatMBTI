@@ -62,7 +62,7 @@
 
 .flip {
   animation-name: flip;
-  animation-duration: 0.5s;
+  animation-duration: var(--custom-duration, 0.5s);
 }
 
 @keyframes flip {

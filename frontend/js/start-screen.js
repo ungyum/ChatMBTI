@@ -28,77 +28,41 @@ const mbtiKeywords = {
   enfp: "ENFP 키워드",
 };
 
-// 스타트 스크린
-// mbti 버튼 클릭 시 뒤집기 애니메이션
-for (let i = 0; i < mbtiBtnChat.length; i++) {
-  mbtiBtnChat[i].addEventListener("click", () => {
-    // 글자 바꿔주는거 확인용
-    mbtiBtnChat[i].classList.toggle("flipped");
-    // 애니메이션
-    mbtiBtnChat[i].classList.remove("flip");
-    mbtiBtnChat[i].offsetWidth = mbtiBtnChat[i].offsetWidth;
-    mbtiBtnChat[i].classList.add("flip");
-  });
-}
-// mbti 버튼들 클릭시 글자 바꿔주기
-const flipTime = 250; // 글자 바뀌는 시간
-no1.addEventListener("click", () => {
-  if (no1.classList.contains("flipped")) {
-    mbti[0] = "e";
-    setTimeout(() => {
-      no1.childNodes[0].innerText = "E";
-    }, flipTime);
-  } else {
-    mbti[0] = "i";
-    setTimeout(() => {
-      no1.childNodes[0].innerText = "I";
-    }, flipTime);
-  }
-});
-no2.addEventListener("click", () => {
-  if (no2.classList.contains("flipped")) {
-    mbti[1] = "n";
-    setTimeout(() => {
-      no2.childNodes[0].innerText = "N";
-    }, flipTime);
-  } else {
-    mbti[1] = "s";
-    setTimeout(() => {
-      no2.childNodes[0].innerText = "S";
-    }, flipTime);
-  }
-});
-no3.addEventListener("click", () => {
-  if (no3.classList.contains("flipped")) {
-    mbti[2] = "f";
-    setTimeout(() => {
-      no3.childNodes[0].innerText = "F";
-    }, flipTime);
-  } else {
-    mbti[2] = "t";
-    setTimeout(() => {
-      no3.childNodes[0].innerText = "T";
-    }, flipTime);
-  }
-});
-no4.addEventListener("click", () => {
-  if (no4.classList.contains("flipped")) {
-    mbti[3] = "p";
-    setTimeout(() => {
-      no4.childNodes[0].innerText = "P";
-    }, flipTime);
-  } else {
-    mbti[3] = "j";
-    setTimeout(() => {
-      no4.childNodes[0].innerText = "J";
-    }, flipTime);
-  }
-});
+// 코드줄이기 용
+const mbtiBtnText = [
+  { unflipped: "I", flipped: "E" },
+  { unflipped: "S", flipped: "N" },
+  { unflipped: "T", flipped: "F" },
+  { unflipped: "J", flipped: "P" },
+];
 
-// mbti 버튼 클릭 시 main-text 바꿔주기
-for (let i = 0; i < mbtiBtnChat.length; i++) {
+// mbti 변수에 값 넣어주기
+const setMBTI = (i) => {
+  if (mbtiBtnChat[i].classList.contains("flipped")) {
+    const char = mbtiBtnText[i].flipped;
+    mbti[i] = char.toLowerCase();
+    return char;
+  } else {
+    const char = mbtiBtnText[i].unflipped;
+    mbti[i] = char.toLowerCase();
+    return char;
+  }
+};
+
+// 키워드(main-text) 바꿔주기
+const updateKeyword = () => {
+  const mbtiStr = mbti.join("");
+  mainText.innerText = mbtiKeywords[mbtiStr];
+};
+
+// 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// mbti 버튼 클릭 시
+for (let i = 0; i < 4; i++) {
   mbtiBtnChat[i].addEventListener("click", () => {
-    const mbtiStr = mbti.join("");
-    mainText.innerText = mbtiKeywords[mbtiStr];
+    mbtiBtnChat[i].classList.toggle("flipped"); // 가장 먼저 뒤집어졌다고 표시
+    const char = setMBTI(i); // mbti 변수 update
+    anim.flipBtn(mbtiBtnChat[i], char, 500); // 뒤집기 애니메이션
+    updateKeyword(); // 키워드(main-text) 바꿔주기
+    sessionStorage.setItem("mbti", mbti.join("")); // mbti 세션스토리지에 저장
   });
 }

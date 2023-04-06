@@ -6,9 +6,6 @@ const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
 const ansBtn = document.querySelector(".ans-btn");
 const quizUI = document.querySelector(".quiz-ui");
 
-// 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
-const chatHistory = [];
-
 // 스크롤 내려주기
 const scrollChat = () => {
   chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
@@ -80,6 +77,11 @@ const appendChatHistory = (user, assistant) => {
 };
 
 // 시작 @@@@@@@@@@@@@@@@
+
+// 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
+const chatHistory = [];
+const mbti = sessionStorage.getItem("mbti");
+
 initChat();
 inputText.focus();
 
@@ -100,7 +102,11 @@ sendBtn.addEventListener("click", async (e) => {
   const loadingIcon = displayLoadingIcon();
   // api 호출
   try {
-    const assistantReply = await api.postChat(sanitizedUserInput, chatHistory); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
+    const assistantReply = await api.postChat(
+      sanitizedUserInput,
+      chatHistory,
+      mbti
+    ); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
     chatInterface.removeChild(loadingIcon);
     displayChat(assistantReply, false);
     appendChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감

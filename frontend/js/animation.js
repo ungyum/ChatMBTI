@@ -61,6 +61,23 @@ const anim = {
       popup.style.removeProperty("--custom-duration");
     }, duration);
   },
+
+  // 버튼 뒤집기
+  // 1번: 버튼 - element
+  // 2번: 버튼에 들어갈 문자 - string
+  // 3번: (optional) 애니메이션 시간 (ms) - number
+  flipBtn: function (btn, char, duration = 500) {
+    btn.style.setProperty("--custom-duration", duration + "ms");
+    btn.classList.remove("flip");
+    btn.offsetWidth = btn.offsetWidth;
+    btn.classList.add("flip");
+    setTimeout(() => {
+      btn.childNodes[0].innerText = char;
+    }, duration / 2);
+    setTimeout(() => {
+      btn.style.removeProperty("--custom-duration");
+    }, duration);
+  },
 };
 
 // help-btn 누르면 팝업창 띄우기
