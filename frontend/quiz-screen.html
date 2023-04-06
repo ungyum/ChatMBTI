@@ -20,7 +20,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,0,0"
     />
     <link rel="stylesheet" href="css/general/for-hidden.css" />
-    <script src="js/lib/purify.js" defer></script>
+    <script src="node_modules/validator/validator.min.js" defer></script>
+    <script src="node_modules/dompurify/dist/purify.min.js" defer></script>
     <script src="js/background.js" defer></script>
     <script src="js/animation.js" defer></script>
     <script src="js/chat-screen.js" defer></script>
@@ -39,12 +40,14 @@
         </span>
         <!-- help 팝업 -->
         <div class="help-popup hidden">
-          <p>MBTI 퀴즈에 오신 것을 환영합니다!😝
-            여러분은 이제부터 무작위의 MBTI를 가진 친구와 대화하게 됩니다.
-            게임 시작 후, 친구가 대화를 걸어올 것입니다. 대화를 이어가다가, 
-            친구의 MBTI 유형을 알아냈다면, MBTI를 골라 "제출하기" 버튼을 눌러주세요.
-            게임을 즐기는 동안 새로운 MBTI 유형을 알아보고, 다양한 유형과 대화를 나누며 새로운 지식을 얻어보세요.
-            자 그럼, "시작" 버튼을 눌러 대화를 시작하세요!</p>
+          <p>
+            MBTI 퀴즈에 오신 것을 환영합니다!😝 여러분은 이제부터 무작위의
+            MBTI를 가진 친구와 대화하게 됩니다. 게임 시작 후, 친구가 대화를
+            걸어올 것입니다. 대화를 이어가다가, 친구의 MBTI 유형을 알아냈다면,
+            MBTI를 골라 "제출하기" 버튼을 눌러주세요. 게임을 즐기는 동안 새로운
+            MBTI 유형을 알아보고, 다양한 유형과 대화를 나누며 새로운 지식을
+            얻어보세요. 자 그럼, "시작" 버튼을 눌러 대화를 시작하세요!
+          </p>
         </div>
       </div>
     </header>

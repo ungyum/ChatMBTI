@@ -83,6 +83,7 @@ const appendChatHistory = (user, assistant) => {
 const chatHistory = [];
 let mbti = sessionStorage.getItem("mbti");
 helpPopupMbti.innerText = mbti.toUpperCase();
+inputText.maxLength = 80;
 
 initChat();
 inputText.focus();

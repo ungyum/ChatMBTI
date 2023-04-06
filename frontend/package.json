@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dompurify": "^3.0.1",
+    "validator": "^13.9.0"
+  }
+}
