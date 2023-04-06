@@ -182,15 +182,41 @@ ansBtn.addEventListener("click", () => {
 // 다시하기 버튼 눌렀을 때
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", () => {
+    if (resultPopup.classList.contains("result-popup-up")) {
+      resultPopup.classList.remove("result-popup-up");
+      return;
+    }
     // 팝업 숨기고
     anim.closePopup(resultPopup, "fade-out", 700);
     initGame();
   });
 });
 
+// result-container에도 click 넣어주기
+wrongResultContainer.addEventListener("click", () => {
+  if (resultPopup.classList.contains("result-popup-up")) {
+    resultPopup.classList.remove("result-popup-up");
+  }
+});
+correctResultContainer.addEventListener("click", () => {
+  if (resultPopup.classList.contains("result-popup-up")) {
+    resultPopup.classList.remove("result-popup-up");
+  }
+});
+
 // 채팅 확인하기 버튼 눌렀을 때
 for (let i = 0; i < 2; i++) {
-  seeChatBtns[i].addEventListener("click", () => {
-    resultPopup.classList.toggle("result-popup-up");
+  seeChatBtns[i].addEventListener("click", (e) => {
+    e.stopPropagation();
+    // 팝업 올리고
+    resultPopup.classList.add("result-popup-up");
+    wrongResultContainer.style.setProperty(
+      "--screen-height",
+      body.offsetHeight + "px"
+    );
+    correctResultContainer.style.setProperty(
+      "--screen-height",
+      body.offsetHeight + "px"
+    );
   });
 }
