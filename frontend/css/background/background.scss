@@ -1,5 +1,21 @@
 @use "../general/foundation" as _;
 
+@font-face {
+  font-family: "Gosanja";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/Gosanja.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HoengseongHanu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/HoengseongHanu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 $banner-height: 53px;
 
 // 상단 배너
@@ -17,6 +33,7 @@ $banner-height: 53px;
   .banner-bold {
     font-weight: 600;
     padding-right: 7px;
+    font-family: "HoengseongHanu", sans-serif;
   }
 
   // 도움 버튼
