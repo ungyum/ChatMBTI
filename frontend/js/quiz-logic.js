@@ -36,7 +36,10 @@ const initGame = () => {
   // 채팅 리셋해주고
   initChat();
   // 랜덤 mbti 골라주고
-  pickRandomMBTI();
+  const ans = pickRandomMBTI();
+  // 세션스토리지 업뎃 + api 보낼 때 쓸 mbti도 업뎃
+  sessionStorage.setItem("mbti", ans);
+  mbti = ans;
   // default 넣어주고
   for (let i = 0; i < mbtiBtnBoxChat.children.length; i++) {
     mbtiBtnBoxChat.children[i].classList.add("default");
@@ -57,6 +60,7 @@ const pickRandomMBTI = () => {
   // 0-15까지 랜덤넘버 만들어주고
   const randomNum = Math.floor(Math.random() * 16);
   ans = randomNum;
+  return ans;
 };
 
 // 결정하기 버튼 부품들

@@ -80,7 +80,7 @@ const appendChatHistory = (user, assistant) => {
 
 // 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
 const chatHistory = [];
-const mbti = sessionStorage.getItem("mbti");
+let mbti = sessionStorage.getItem("mbti");
 
 initChat();
 inputText.focus();

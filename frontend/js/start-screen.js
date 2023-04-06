@@ -56,6 +56,9 @@ const updateKeyword = () => {
 };
 
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// 세션 초기화
+sessionStorage.setItem("mbti", mbti.join(""));
+
 // mbti 버튼 클릭 시
 for (let i = 0; i < 4; i++) {
   mbtiBtnChat[i].addEventListener("click", () => {
