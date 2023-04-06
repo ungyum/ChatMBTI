@@ -17,7 +17,7 @@
 
   // 인풋박스 보더라인 잡힌거
   .chat-input {
-    width: 90vw;
+    width: 90%;
     border: 1px solid _.$font-color;
     padding: 0 20px;
     $input-height: 40px;
@@ -48,7 +48,7 @@
 
 .chat-scrollbox {
   flex-grow: 1;
-  width: 100%; // 스크롤바 끝으로 보내기 
+  width: 100%; // 스크롤바 끝으로 보내기
   height: 0px;
   display: flex;
   flex-direction: column;
@@ -59,12 +59,13 @@
   // width: 90vw; // 가로 꽉 채우기
   @include _.flex-column;
 
-  // 공통으로 해당되는 것들
+  // 유저랑 assistant 공통으로 해당되는 것들
   .chat-message {
     @include _.flex-row;
     align-items: flex-end;
     width: 100%;
     margin-top: 10px;
+    padding: 0 calc(5% + 10px); // padding-left: 5% + 20px
 
     // 챗박스
     .chat {
@@ -73,7 +74,7 @@
       max-width: 75%;
       padding: 5px 15px;
       font-size: 18px;
-      margin: 0 20px 0 10px;  // 스크롤바 사이 간격
+      overflow-wrap: break-word;
     }
   }
 
@@ -93,7 +94,7 @@
     .profile-pic {
       @include _.square(40px);
       border-radius: 9px;
-      margin: 0 0px 0 20px;
+      margin: 0 10px 0 0;
     }
   }
 

@@ -16,7 +16,7 @@
   left: 0;
 }
 .chat-screen .chat-input {
-  width: 90vw;
+  width: 90%;
   border: 1px solid #494949;
   padding: 0 20px;
   height: 40px;
@@ -68,6 +68,7 @@
   align-items: flex-end;
   width: 100%;
   margin-top: 10px;
+  padding: 0 calc(5% + 10px);
 }
 .chat-interface .chat-message .chat {
   border: 1px solid #494949;
@@ -75,7 +76,7 @@
   max-width: 75%;
   padding: 5px 15px;
   font-size: 18px;
-  margin: 0 20px 0 5px;
+  overflow-wrap: break-word;
 }
 .chat-interface .loading-icon {
   align-self: flex-start;
@@ -91,7 +92,7 @@
   height: 40px;
   text-align: center;
   border-radius: 9px;
-  margin: 0 0px 0 20px;
+  margin: 0 10px 0 0;
 }
 .chat-interface .user {
   justify-content: flex-end;
