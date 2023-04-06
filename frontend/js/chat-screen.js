@@ -124,14 +124,14 @@ inputText.addEventListener("keyup", (e) => {
 });
 
 // 임시 챗 생성 버튼
-// const assistantBtn = document.querySelector(".assistant-btn");
-// const userBtn = document.querySelector(".user-btn");
+const assistantBtn = document.querySelector(".assistant-btn");
+const userBtn = document.querySelector(".user-btn");
 
-// assistantBtn.addEventListener("click", () => {
-//   addChatMessage("Hello, how can I help you?", false);
-//   chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
-// });
-// userBtn.addEventListener("click", () => {
-//   addChatMessage("I need help with my order", true);
-//   chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
-// });
+assistantBtn.addEventListener("click", () => {
+  displayChat("Hello, how can I help you?", false);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
+});
+userBtn.addEventListener("click", () => {
+  displayChat("I need help with my order", true);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
+});

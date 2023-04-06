@@ -48,6 +48,7 @@
 
 .chat-scrollbox {
   flex-grow: 1;
+  width: 100%; // 스크롤바 끝으로 보내기 
   height: 0px;
   display: flex;
   flex-direction: column;
@@ -55,7 +56,7 @@
 }
 
 .chat-interface {
-  width: 90vw; // 가로 꽉 채우기
+  // width: 90vw; // 가로 꽉 채우기
   @include _.flex-column;
 
   // 공통으로 해당되는 것들
@@ -72,6 +73,7 @@
       max-width: 75%;
       padding: 5px 15px;
       font-size: 18px;
+      margin: 0 20px 0 10px;  // 스크롤바 사이 간격
     }
   }
 
@@ -91,7 +93,7 @@
     .profile-pic {
       @include _.square(40px);
       border-radius: 9px;
-      margin: 0 10px 0 0;
+      margin: 0 0px 0 20px;
     }
   }
 
