@@ -2,6 +2,7 @@ const ansValue = document.querySelector(".ans-value");
 const triesValue = document.querySelector(".tries-value");
 const winStreakValue = document.querySelector(".win-streak-value");
 const higestScoreValue = document.querySelector(".highest-score-value");
+const seeChatBtns = document.querySelectorAll(".see-chat-btn");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
@@ -186,3 +187,10 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
+
+// 채팅 확인하기 버튼 눌렀을 때
+for (let i = 0; i < 2; i++) {
+  seeChatBtns[i].addEventListener("click", () => {
+    resultPopup.classList.toggle("result-popup-up");
+  });
+}

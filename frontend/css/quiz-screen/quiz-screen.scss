@@ -61,8 +61,11 @@
   padding: 20px;
   border-radius: 20px;
   font-weight: 400;
+  position: relative;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.47, 1.13, 0.54, 1.07);
 
-  button {
+  .regame-btn {
     font-size: 30px;
     @include _.background;
     font-size: 1rem;
@@ -73,6 +76,24 @@
     border-radius: calc($height/2);
     box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
     margin: 10px;
+  }
+
+  .see-chat-btn {
+    position: absolute;
+    top: 100%;
+    margin: 10px;
+    background-color: transparent;
+    color: _.$background-color;
+    border: none;
+    text-decoration: underline;
+    font-size: 20px;
+    text-underline-position: under;
+  }
+}
+
+.result-popup-up {
+  .result-container {
+    transform: translateY(calc(var(--screen-height) / 2));
   }
 }
 

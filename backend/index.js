@@ -34,6 +34,7 @@ const apiCall = async (userInput, chatHistory, mbti) => {
     // { role: "assistant", content: "준비됐어!" },
     // { role: "user", content: "너 이름이 뭐야?" },
     // { role: "assistant", content: "나는 제임스야 ㅋㅋㅋ" },
+    // { role: "assistant", content: "안녕, 요즘 어떻게 지내?" },
     { role: "user", content: `say: I'm ${mbti}` },
   ];
   // 히스토리 추가
