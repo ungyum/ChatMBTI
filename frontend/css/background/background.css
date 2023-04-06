@@ -85,6 +85,11 @@ button {
   right: 0;
   background-color: #fcfff7;
   z-index: 2;
+  max-width: 360px;
+  border-radius: 10px;
+  background-color: #e9ecdc;
+  padding: 10px 30px;
+  font-size: 24px;
 }
 .help-popup p {
   margin: 0;
