@@ -5,6 +5,7 @@ const chatScrollbox = document.querySelector(".chat-scrollbox");
 const mbtiBtnBoxChat = document.querySelector(".mbti-buttons-chat");
 const ansBtn = document.querySelector(".ans-btn");
 const quizUI = document.querySelector(".quiz-ui");
+const helpPopupMbti = document.querySelector(".help-popup-mbti");
 
 // 스크롤 내려주기
 const scrollChat = () => {
@@ -81,6 +82,7 @@ const appendChatHistory = (user, assistant) => {
 // 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
 const chatHistory = [];
 let mbti = sessionStorage.getItem("mbti");
+helpPopupMbti.innerText = mbti.toUpperCase();
 
 initChat();
 inputText.focus();
