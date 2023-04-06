@@ -5,7 +5,7 @@ const higestScoreValue = document.querySelector(".highest-score-value");
 
 let guess = ["?", "?", "?", "?"];
 let ans;
-let winStreak;
+let winStreak = sessionStorage.getItem("winStreak");
 
 // 백엔드용
 const mbtiList = [
@@ -135,8 +135,10 @@ const incrementWinStreak = () => {
   // 첫게임이면 0으로 설정
   if (winStreak === undefined) {
     winStreak = 0;
+    sessionStorage.setItem("winStreak", winStreak);
   }
   winStreak++;
+  sessionStorage.setItem("winStreak", winStreak);
 };
 // 최고기록 가져오기
 const getHighestScore = () => {
@@ -171,6 +173,7 @@ ansBtn.addEventListener("click", () => {
     // 최고기록 가져온 후 winStreak 초기화 후 결과창 띄우기
     const highestScore = getHighestScore();
     winStreak = 0;
+    sessionStorage.setItem("winStreak", winStreak);
     showResultWrong(highestScore);
   }
 });
