@@ -21,6 +21,12 @@
   font-weight: bold;
   width: 70%;
 }
+.start-screen .text-box .keyword-text {
+  width: 300px;
+  font-size: 30px;
+  margin-bottom: 100px;
+  font-weight: 500;
+}
 .start-screen button {
   background-color: #ccd6a6;
   font-size: 1rem;

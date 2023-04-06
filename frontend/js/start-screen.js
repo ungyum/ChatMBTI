@@ -5,6 +5,7 @@ const no3 = document.querySelector(".no3");
 const no4 = document.querySelector(".no4");
 const mbti = ["i", "s", "t", "j"]; // mbti 값 담아줄 변수
 const mainText = document.querySelector(".main-text");
+const keywordText = document.querySelector(".keyword-text");
 const mbtiKeywords = {
   // IS** ttff 순, jpjp 순
   istj: "남 얘기 듣는거 안좋아함, 원리원칙, 철벽 잘 침",
@@ -13,7 +14,7 @@ const mbtiKeywords = {
   isfp: "귀찮음, 집에 가면 연락 두절됨, 약속 극혐",
   // IN** ttff 순, jpjp 순
   intj: "혼자 있는거 좋아함, 공감 못함, 위로 못함",
-  intp: "자기가 잘난 줄 암, 진지충이라는 소리 들음, 분석 좋아함",
+  intp: "자기가 잘난 줄 암, 진지충, 분석 좋아함",
   infj: "내사람한테는 잘해줌, 생각 많음, 낯가림 심함",
   infp: "잡생각 많음, 남한테 관심없음, 싫으면 진짜 싫은거",
   // ES** ttff 순, jpjp 순
@@ -52,7 +53,7 @@ const setMBTI = (i) => {
 // 키워드(main-text) 바꿔주기
 const updateKeyword = () => {
   const mbtiStr = mbti.join("");
-  mainText.innerText = mbtiKeywords[mbtiStr];
+  keywordText.innerText = mbtiKeywords[mbtiStr];
 };
 
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -65,6 +66,8 @@ for (let i = 0; i < 4; i++) {
     mbtiBtnChat[i].classList.toggle("flipped"); // 가장 먼저 뒤집어졌다고 표시
     const char = setMBTI(i); // mbti 변수 update
     anim.flipBtn(mbtiBtnChat[i], char, 500); // 뒤집기 애니메이션
+    mainText.classList.add("hidden"); // 메인 텍스트 숨기기
+    keywordText.classList.remove("hidden"); // 메인 텍스트 숨기기
     updateKeyword(); // 키워드(main-text) 바꿔주기
     sessionStorage.setItem("mbti", mbti.join("")); // mbti 세션스토리지에 저장
   });
