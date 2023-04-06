@@ -181,7 +181,7 @@ ansBtn.addEventListener("click", () => {
 
 // 다시하기 버튼 눌렀을 때
 regameBtns.forEach((regameBtn) => {
-  regameBtn.addEventListener("click", () => {
+  regameBtn.addEventListener("click", (e) => {
     if (resultPopup.classList.contains("result-popup-up")) {
       resultPopup.classList.remove("result-popup-up");
       return;

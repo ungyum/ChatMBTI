@@ -50,6 +50,7 @@
   background-color: rgba(0, 0, 0, 0.629);
   z-index: 5;
   @include _.flex-column;
+  transition: 0.4s;
 }
 
 .result-container {
