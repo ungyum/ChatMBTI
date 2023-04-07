@@ -1,9 +1,3 @@
-const ansValue = document.querySelector(".ans-value");
-const triesValue = document.querySelector(".tries-value");
-const winStreakValue = document.querySelector(".win-streak-value");
-const higestScoreValue = document.querySelector(".highest-score-value");
-const seeChatBtns = document.querySelectorAll(".see-chat-btn");
-
 let guess = ["?", "?", "?", "?"];
 let ans;
 let winStreak = sessionStorage.getItem("winStreak");
@@ -200,36 +194,3 @@ regameBtns.forEach((regameBtn) => {
     initGame();
   });
 });
-
-// result-container에도 click 넣어주기
-wrongResultContainer.addEventListener("click", () => {
-  if (resultPopup.classList.contains("result-popup-up")) {
-    closeResultPopup();
-  }
-});
-correctResultContainer.addEventListener("click", () => {
-  if (resultPopup.classList.contains("result-popup-up")) {
-    closeResultPopup();
-  }
-});
-
-// 채팅 확인하기 버튼 눌렀을 때
-for (let i = 0; i < 2; i++) {
-  seeChatBtns[i].addEventListener("click", (e) => {
-    e.stopPropagation();
-    // 팝업 올리고
-    resultPopup.classList.add("result-popup-up");
-    wrongResultContainer.style.setProperty(
-      "--screen-height",
-      body.offsetHeight + "px"
-    );
-    correctResultContainer.style.setProperty(
-      "--screen-height",
-      body.offsetHeight + "px"
-    );
-    setTimeout(() => {
-      resultPopup.style.top = "50%";
-      resultPopup.style.height = "0";
-    }, 500);
-  });
-}

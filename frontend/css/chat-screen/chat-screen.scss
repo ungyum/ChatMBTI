@@ -42,9 +42,8 @@
     outline: none;
     resize: none;
   }
-
   .input-field[contenteditable]:empty::before {
-    content: "챗을 입력하세요";
+    content: attr(data-placeholder);
     color: rgb(176, 176, 176);
   }
 
@@ -126,4 +125,9 @@
   @include _.popup;
   bottom: 100%;
   margin: 0 0 10px 0;
+}
+
+// 챗 아래로 정렬 위한 빈칸
+.blankspace {
+  height: var(--blankspace-height);
 }

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .fa-chevron-left {
   position: absolute;
   font-size: 35px;
@@ -46,7 +45,7 @@
   resize: none;
 }
 .input-field-container .input-field[contenteditable]:empty::before {
-  content: "챗을 입력하세요";
+  content: attr(data-placeholder);
   color: rgb(176, 176, 176);
 }
 .input-field-container .send-btn {
@@ -123,4 +122,8 @@
   padding: 5px 15px;
   bottom: 100%;
   margin: 0 0 10px 0;
+}
+
+.blankspace {
+  height: var(--blankspace-height);
 }/*# sourceMappingURL=chat-screen.css.map */

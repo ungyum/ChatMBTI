@@ -5,6 +5,11 @@ const correctResultContainer = document.querySelector(
   ".correct-result-container"
 );
 const wrongResultContainer = document.querySelector(".wrong-result-container");
+const ansValue = document.querySelector(".ans-value");
+const triesValue = document.querySelector(".tries-value");
+const winStreakValue = document.querySelector(".win-streak-value");
+const higestScoreValue = document.querySelector(".highest-score-value");
+const seeChatBtns = document.querySelectorAll(".see-chat-btn");
 
 // 설명화면 -> 채팅화면 애니메이션
 quizStartBtn.addEventListener("click", () => {
@@ -12,7 +17,7 @@ quizStartBtn.addEventListener("click", () => {
 });
 // 부품
 const focusInput = () => {
-  inputText.focus();
+  inputField.focus();
 };
 
 // mbtiBtnChat 누르면
@@ -50,5 +55,38 @@ for (let i = 0; i < mbtiBtnChat.length; i++) {
         mbtiBtnChat[i].children[0].innerText = mbtiBtnText[i].unflipped;
       }, flipTime);
     }
+  });
+}
+
+// result-container에도 click 넣어주기
+wrongResultContainer.addEventListener("click", () => {
+  if (resultPopup.classList.contains("result-popup-up")) {
+    closeResultPopup();
+  }
+});
+correctResultContainer.addEventListener("click", () => {
+  if (resultPopup.classList.contains("result-popup-up")) {
+    closeResultPopup();
+  }
+});
+
+// 채팅 확인하기 버튼 눌렀을 때
+for (let i = 0; i < 2; i++) {
+  seeChatBtns[i].addEventListener("click", (e) => {
+    e.stopPropagation();
+    // 팝업 올리고
+    resultPopup.classList.add("result-popup-up");
+    wrongResultContainer.style.setProperty(
+      "--screen-height",
+      body.offsetHeight + "px"
+    );
+    correctResultContainer.style.setProperty(
+      "--screen-height",
+      body.offsetHeight + "px"
+    );
+    setTimeout(() => {
+      resultPopup.style.top = "50%";
+      resultPopup.style.height = "0";
+    }, 500);
   });
 }
