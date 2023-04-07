@@ -29,53 +29,55 @@
     <title>ChatMBTI</title>
   </head>
   <body>
-    <header>
-      <!-- <div class="ad">광고</div> -->
-      <div class="banner">
-        <span><span class="banner-bold">ChatMBTI</span></span>
-        <span class="material-symbols-outlined help-btn heart-beat">
-          help
-        </span>
-        <div class="help-popup hidden">
-          <p class="mbti-value">
-            친구의 MBTI는 <span class="help-popup-mbti">OOOO</span>입니다.
-            즐겁게 대화를 나누어보세요! 😝
-          </p>
+    <div class="pc">
+      <header>
+        <!-- <div class="ad">광고</div> -->
+        <div class="banner">
+          <span><span class="banner-bold">ChatMBTI</span></span>
+          <span class="material-symbols-outlined help-btn heart-beat">
+            help
+          </span>
+          <div class="help-popup hidden">
+            <p class="mbti-value">
+              친구의 MBTI는 <span class="help-popup-mbti">OOOO</span>입니다.
+              즐겁게 대화를 나누어보세요! 😝
+            </p>
+          </div>
         </div>
-      </div>
-    </header>
-    <i
-      class="back-btn fa-solid fa-chevron-left"
-      onclick="location.href = 'index.html'"
-    ></i>
-    <div class="screen">
-      <!-- 챗스크린 -->
-      <div class="chat-screen">
-        <div class="chat-scrollbox">
-          <div class="chat-interface"></div>
+      </header>
+      <i
+        class="back-btn fa-solid fa-chevron-left"
+        onclick="location.href = 'index.html'"
+      ></i>
+      <div class="screen">
+        <!-- 챗스크린 -->
+        <div class="chat-screen">
+          <div class="chat-scrollbox">
+            <div class="chat-interface"></div>
+          </div>
+          <div class="test-container">
+            <button class="assistant-btn">챗봇대화창 생성</button>
+            <button class="user-btn">유저대화창 생성</button>
+          </div>
+          <div class="input-field-container">
+            <span
+              class="input-field"
+              role="textbox"
+              contenteditable
+              spellcheck="false"
+            ></span>
+            <div class="send-btn">보내기</div>
+          </div>
         </div>
-        <div class="test-container">
-          <button class="assistant-btn">챗봇대화창 생성</button>
-          <button class="user-btn">유저대화창 생성</button>
-        </div>
-        <div class="input-field-container">
-          <span
-            class="input-field"
-            role="textbox"
-            contenteditable
-            spellcheck="false"
-          ></span>
-          <div class="send-btn">보내기</div>
-        </div>
-      </div>
-      <!-- 퀴즈 설명 -->
-      <!-- <div class="quiz-inform-screen hidden">
+        <!-- 퀴즈 설명 -->
+        <!-- <div class="quiz-inform-screen hidden">
         <p>게임 설명: 어쩌구 저쩌구</p>
         <button class="quiz-start-btn">START</button>
       </div> -->
+      </div>
+      <footer>
+        <div class="ad-bottom">광고</div>
+      </footer>
     </div>
-    <footer>
-      <div class="ad">광고</div>
-    </footer>
   </body>
 </html>

@@ -249,7 +249,7 @@ sendBtn.addEventListener("click", async (e) => {
     anim.displayPopupUnder(
       inputFieldContainer,
       "warning-popup",
-      "챗봇이 죽었어요ㅠㅠ",
+      "ChatGPT가 아파요 ㅠㅠ 다시 시도해주세요",
       1500
     );
     chatInterface.removeChild(loadingIcon); // 로딩아이콘 지워주고

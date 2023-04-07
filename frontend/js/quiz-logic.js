@@ -2,30 +2,6 @@ let guess = ["?", "?", "?", "?"];
 let ans;
 let winStreak = sessionStorage.getItem("winStreak");
 
-// 백엔드용
-const mbtiList = [
-  // IS** ttff 순, jpjp 순
-  "istj", //0000
-  "istp", //0001
-  "isfj", //0010
-  "isfp", //0011
-  // IN** ttff 순, jpjp 순
-  "intj", //0100
-  "intp", //0101
-  "infj",
-  "infp",
-  // ES** ttff 순, jpjp 순
-  "estj",
-  "estp",
-  "esfj",
-  "esfp",
-  // EN** ttff 순, jpjp 순
-  "entj",
-  "entp",
-  "enfj",
-  "enfp",
-];
-
 // 새 게임 만들기
 const initGame = () => {
   // 채팅 리셋해주고

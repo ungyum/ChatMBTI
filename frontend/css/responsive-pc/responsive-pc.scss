@@ -1,13 +1,29 @@
 @use "../general/foundation" as _;
 
 @media (min-width: 600px) {
-  .chat-screen {
-    .quiz-ui {
-      flex-direction: row;
+  .pc {
+    width: 400px;
+    border: 10px solid _.$font-color;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  header {
+    background-color: _.$font-color;
+  }
 
-      .ans-btn {
-        margin-left: 25px;
-      }
-    }
+  .banner {
+    border-radius: 10px 10px 0 0;
+  }
+
+  body {
+    @include _.flex-row;
+  }
+
+  .input-field-container {
+    margin-bottom: 20px;
+  }
+
+  .fa-chevron-left {
+    margin-top: 10px;
   }
 }

@@ -23,6 +23,7 @@
   font-size: 1.7rem;
   color: #494949;
   font-weight: 100;
+  position: relative;
 }
 .banner .banner-bold {
   font-weight: 600;
@@ -45,7 +46,13 @@
   height: var(--screen-height);
 }
 
-.ad {
+@media (min-width: 600px) {
+  .screen {
+    height: calc(var(--screen-height) - 20px);
+    border-radius: 0 0 10px 10px;
+  }
+}
+.ad-bottom {
   width: 100%;
   display: flex;
   justify-content: center;

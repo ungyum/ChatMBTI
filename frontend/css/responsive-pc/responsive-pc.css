@@ -1,8 +1,26 @@
 @media (min-width: 600px) {
-  .chat-screen .quiz-ui {
+  .pc {
+    width: 400px;
+    border: 10px solid #494949;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  header {
+    background-color: #494949;
+  }
+  .banner {
+    border-radius: 10px 10px 0 0;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
   }
-  .chat-screen .quiz-ui .ans-btn {
-    margin-left: 25px;
+  .input-field-container {
+    margin-bottom: 20px;
+  }
+  .fa-chevron-left {
+    margin-top: 10px;
   }
 }/*# sourceMappingURL=responsive-pc.css.map */

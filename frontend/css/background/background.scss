@@ -29,6 +29,7 @@ $banner-height: 53px;
   font-size: 1.7rem;
   color: _.$font-color;
   font-weight: 100;
+  position: relative;
 
   .banner-bold {
     font-weight: 600;
@@ -54,8 +55,15 @@ $banner-height: 53px;
   height: var(--screen-height);
 }
 
+@media (min-width: 600px) {
+  .screen {
+    height: calc(var(--screen-height) - 20px);
+    border-radius: 0 0 10px 10px;
+  }
+}
+
 // 광고
-.ad {
+.ad-bottom {
   width: 100%;
   @include _.flex-row;
   height: 100px;
