@@ -80,7 +80,7 @@ const getUserInputNew = () => {
   const messageDirty = inputField.innerText;
   const messageClean = DOMPurify.sanitize(messageDirty);
   inputField.innerText = "";
-  return messageClean;
+  return messageClean.trim();
 };
 
 const displayFailedPopup = () => {
@@ -109,8 +109,6 @@ const appendChatHistory = (user, assistant) => {
 const isQuiz = () => {
   return chatScreen.classList.contains("quiz");
 };
-
-const prohibitedWords = ["mbti", "성격", "유형"];
 
 // 입력값에 prohibitedWords 포함되어있는지 체크: find를 활용해서 배열에 포함된 단어가 있는지 체크 후 있으면 그 단어 리턴
 const validateInput = () => {
@@ -146,7 +144,10 @@ const isInputTooLong = () => {
     return true;
   }
 };
+
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@
+
+const prohibitedWords = ["mbti", "성격", "유형"];
 
 // 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
 const chatHistory = [];
@@ -164,6 +165,11 @@ sendBtn.addEventListener("click", async (e) => {
   // UX 설정
   e.preventDefault();
   inputField.focus();
+
+  // 입력값이 공백만으로 이루어져있으면 막기
+  if (inputField.innerText !== "" && inputField.innerText.trim() === "") {
+    return;
+  }
 
   // 입력값 너무 길면 입력 막기
   if (!isInputTooLong()) {
@@ -183,7 +189,7 @@ sendBtn.addEventListener("click", async (e) => {
   // 입력값 정상이면
 
   let sanitizedUserInput = getUserInputNew();
-  if (inputField.innerText == "") {
+  if (sanitizedUserInput == "") {
     sanitizedUserInput = inputField.getAttribute("data-placeholder");
   }
   inputField.setAttribute("data-placeholder", getChatRecom()); // placeholder 바꾸기
@@ -211,22 +217,18 @@ sendBtn.addEventListener("click", async (e) => {
   }
 });
 
-inputField.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+// 엔터키로도 보내기 (아래꺼랑 둘다 필요)
+inputField.onkeydown = (e) => {
+  if (e.key === "Enter" || e.keyCode === 13) {
     if (!e.shiftKey) {
       e.preventDefault();
-    }
-  }
-});
-// 엔터키로도 보내기
-inputField.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    if (!e.shiftKey) {
-      e.preventDefault();
+      if (e.isComposing) {
+        return;
+      }
       sendBtn.click();
     }
   }
-});
+};
 
 // // 임시 챗 생성 버튼
 const assistantBtn = document.querySelector(".assistant-btn");
