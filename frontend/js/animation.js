@@ -82,12 +82,11 @@ const anim = {
   // 팝업 자체를 만들어서 넣어주는 함수
   // 1번: 팝업이 들어갈 부모 - element
   // 2번: 팝업의 css class 이름 - string
-  // 3번: 팝업의 내용 - string
-  // 4번: (optional) 팝업의 애니메이션 시간 (ms) - number: 기본값 300
-  // 5번: (optional) 팝업이 표시될 시간 (ms) - number: 기본값 2000
-  // 6번: (optional) 팝업 시작 애니메이션 - string: 기본값 fade-in
-  // 7번: (optional) 팝업 끝 애니메이션 - string: 기본값 fade-out
-  createPopupUnder: function (
+  // 3번: 팝업의 innerText 내용 - string
+  // 4번: (optional) 팝업이 표시될 시간 (ms) - number: 기본값 2000
+  // 5번: (optional) 팝업의 애니메이션 시간 (ms) - number: 기본값 300
+  // 6, 7번: (optional) 팝업 시작/끝 애니메이션 - string: 기본값 fade-in/fade-out
+  displayPopupUnder: function (
     parentElement,
     popupClassNameForCss,
     popupInnerText,

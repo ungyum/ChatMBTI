@@ -75,7 +75,7 @@ const addChatText = (message) => {
   lastChatText.innerText = message;
 };
 
-const getUserInputNew = () => {
+const getUserInput = () => {
   // 입력값 청소해주기
   const messageDirty = inputField.innerText;
   const messageClean = DOMPurify.sanitize(messageDirty);
@@ -111,21 +111,22 @@ const isQuiz = () => {
 };
 
 // 입력값에 prohibitedWords 포함되어있는지 체크: find를 활용해서 배열에 포함된 단어가 있는지 체크 후 있으면 그 단어 리턴
-const validateInput = () => {
+const hasProhibitedWords = () => {
   const userInput = inputField.innerText.toLowerCase();
   const prohibitedWord = prohibitedWords.find((word) =>
     userInput.includes(word)
   );
+  // 금지어 포함되어 있으면 팝업 띄우기
   if (prohibitedWord) {
-    anim.createPopupUnder(
+    anim.displayPopupUnder(
       inputFieldContainer,
       "warning-popup",
       `금지어 포함됨: ${prohibitedWord}`,
       1500
     );
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 
@@ -133,117 +134,32 @@ const validateInput = () => {
 const isInputTooLong = () => {
   if (inputField.innerText.length > inputMaxLength) {
     // inputFieldContainer에 child를 달아서 글자수가 70자를 초과한다고 표시
-    anim.createPopupUnder(
+    anim.displayPopupUnder(
       inputFieldContainer,
       "warning-popup",
       `${inputMaxLength}자 이하로 입력해주세요!`,
       1500
     );
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 
-// 시작 @@@@@@@@@@@@@@@@@@@@@@@
-
-const prohibitedWords = ["mbti", "성격", "유형"];
-
-// 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
-const chatHistory = [];
-let mbti = sessionStorage.getItem("mbti");
-if (!isQuiz()) {
-  helpPopupMbti.innerText = mbti.toUpperCase();
-}
-let inputMaxLength = 70; // number
-
-initChat();
-inputField.focus();
-
-// 보내기 버튼
-sendBtn.addEventListener("click", async (e) => {
-  // UX 설정
-  e.preventDefault();
-  inputField.focus();
-
-  // 입력값이 공백만으로 이루어져있으면 막기
-  if (inputField.innerText !== "" && inputField.innerText.trim() === "") {
-    return;
-  }
-
-  // 입력값 너무 길면 입력 막기
-  if (!isInputTooLong()) {
-    return;
-  }
-
-  // 퀴즈중 일때 입력값 확인
-  if (isQuiz()) {
-    if (inputField.innerText === "") {
-      return;
-    }
-    if (!validateInput()) {
-      return;
-    }
-  }
-
-  // 입력값 정상이면
-
-  let sanitizedUserInput = getUserInputNew();
-  if (sanitizedUserInput == "") {
-    sanitizedUserInput = inputField.getAttribute("data-placeholder");
-  }
-  inputField.setAttribute("data-placeholder", getChatRecom()); // placeholder 바꾸기
-  displayChat(sanitizedUserInput, true);
-  const loadingIcon = displayLoadingIcon();
-  // api 호출
-  try {
-    const assistantReply = await api.postChat(
-      sanitizedUserInput,
-      chatHistory,
-      mbti
-    ); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
-    chatInterface.removeChild(loadingIcon);
-    displayChat(assistantReply, false);
-    appendChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
-  } catch {
-    // 화면에 3초간 팝업 띄우기. 팝업 안에는 "챗봇이 죽었어요ㅠㅠ"라고 적혀있음
-    anim.createPopupUnder(
-      inputFieldContainer,
-      "warning-popup",
-      "챗봇이 죽었어요ㅠㅠ",
-      1500
-    );
-    chatInterface.removeChild(loadingIcon);
-  }
-});
-
-// 엔터키로도 보내기 (아래꺼랑 둘다 필요)
-inputField.onkeydown = (e) => {
-  if (e.key === "Enter" || e.keyCode === 13) {
-    if (!e.shiftKey) {
-      e.preventDefault();
-      if (e.isComposing) {
-        return;
-      }
-      sendBtn.click();
-    }
-  }
+// 랜덤 챗 추천 가져와서 리턴하는 함수
+const getChatRecom = () => {
+  const randomIdx = Math.floor(Math.random() * chatRecom.length);
+  return chatRecom[randomIdx];
 };
 
-// // 임시 챗 생성 버튼
-const assistantBtn = document.querySelector(".assistant-btn");
-const userBtn = document.querySelector(".user-btn");
+// 인풋 관련
+const isOnlySpace = () => {
+  return inputField.innerText !== "" && inputField.innerText.trim() === "";
+};
 
-assistantBtn.addEventListener("click", () => {
-  displayChat("Hello, how can I help you?", false);
-  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
-});
-userBtn.addEventListener("click", () => {
-  displayChat("I need help with my order", true);
-  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
-});
+// 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-// 챗 추천 리스트
+// 챗 추천 모음
 const chatRecom = [
   "안녕, 만나서 반가워!",
   "너가 제일 좋아하는 색깔이 뭐야?",
@@ -265,8 +181,110 @@ const chatRecom = [
   "인생은 공평해 불공평해?",
 ];
 
-// 랜덤 챗 추천 가져와서 리턴하는 함수
-const getChatRecom = () => {
-  const randomIdx = Math.floor(Math.random() * chatRecom.length);
-  return chatRecom[randomIdx];
+// 금지어 모음
+const prohibitedWords = ["mbti", "성격", "유형"];
+
+// 인풋 최댓값
+let inputMaxLength = 70; // number
+
+// 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
+const chatHistory = [];
+// mbti 값 가져오기
+let mbti = sessionStorage.getItem("mbti");
+// 챗화면일때 달라지는점
+if (!isQuiz()) {
+  helpPopupMbti.innerText = mbti.toUpperCase(); // 헬프팝업에 mbti 표시
+}
+
+// 채팅창 초기화
+initChat();
+inputField.focus();
+
+// 보내기 버튼 눌렀을 때
+sendBtn.addEventListener("click", async (e) => {
+  // UX 설정
+  e.preventDefault();
+  inputField.focus();
+
+  // 보내기 비활성화 조건
+  // 1. 공백으로만 구성되어있을 때
+  // 2. 입력값이 70자 이상일 때
+  if (isOnlySpace() || isInputTooLong()) {
+    return;
+  }
+
+  // 퀴즈중 일때 검사할 것
+  // 1. 퀴즈는 공백이어도 추천챗 안넣어줌
+  // 2. 금지어 포함되어 있으면 안됨
+  if (isQuiz()) {
+    if ((inputField.innerText === "") | hasProhibitedWords()) {
+      return;
+    }
+  }
+
+  // 입력값 정상이면
+  const sanitizedUserInput = getUserInput();
+  // 입력안했으면 innerText에 placeholder 넣어주고 리턴
+  if (sanitizedUserInput === "") {
+    inputField.innerText = inputField.getAttribute("data-placeholder");
+    return;
+  }
+  inputField.setAttribute("data-placeholder", getChatRecom()); // 랜덤 추천챗 골라와서 placeholder 바꿔주기
+  displayChat(sanitizedUserInput, true); // 화면에 채팅 올라오고
+  const loadingIcon = displayLoadingIcon(); // 답변 올때까지 로딩 아이콘
+  // api 호출
+  try {
+    const assistantReply = await api.postChat(
+      sanitizedUserInput,
+      chatHistory,
+      mbti
+    ); // 호출 실패시 이 라인 이후로는 무시되고 catch로 넘어감
+    chatInterface.removeChild(loadingIcon); // 로딩아이콘 지워주고
+    displayChat(assistantReply, false); // assistant reply 화면에 올라옴
+    appendChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
+  } catch {
+    // api 실패 시 -> "챗봇이 죽었어요ㅠㅠ" 팝업 1.5초
+    anim.displayPopupUnder(
+      inputFieldContainer,
+      "warning-popup",
+      "챗봇이 죽었어요ㅠㅠ",
+      1500
+    );
+    chatInterface.removeChild(loadingIcon);
+  }
+});
+
+// 엔터키로도 보내기
+inputField.onkeydown = (e) => {
+  if (e.key === "Enter" || e.keyCode === 13) {
+    if (!e.shiftKey) {
+      // 엔터키 눌렀을 때 보내기버튼 클릭해줄건데 shift는 제외
+      e.preventDefault(); // 꼭 이 위치에 있어야함. 안그러면 엔터키 누르면 줄바꿈됨
+      if (e.isComposing) {
+        // 한글버그때매 이거 꼭 필요
+        return;
+      }
+      sendBtn.click();
+    }
+  }
 };
+inputField.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" || e.keyCode === 13) {
+    if (!e.shiftKey) {
+      sendBtn.click();
+    }
+  }
+});
+
+// // 임시 챗 생성 버튼
+const assistantBtn = document.querySelector(".assistant-btn");
+const userBtn = document.querySelector(".user-btn");
+
+assistantBtn.addEventListener("click", () => {
+  displayChat("Hello, how can I help you?", false);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
+});
+userBtn.addEventListener("click", () => {
+  displayChat("I need help with my order", true);
+  chatScrollbox.scrollTop = chatScrollbox.scrollHeight;
+});

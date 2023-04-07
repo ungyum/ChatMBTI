@@ -144,16 +144,6 @@ const getHighestScore = () => {
   }
 };
 
-const closeResultPopup = () => {
-  resultPopup.style.transition = "0s";
-  resultPopup.style.top = "0";
-  resultPopup.style.height = "100%";
-  setTimeout(() => {
-    resultPopup.style.transition = "0.5s";
-    resultPopup.classList.remove("result-popup-up");
-  }, 0);
-};
-
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 // 시작화면에서 퀴즈버튼 눌렀을 때
@@ -163,13 +153,14 @@ quizStartBtn.addEventListener("click", () => {
 
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
-  // guess 값 가져오고
-  setGuessFromBtns();
+  setGuessFromBtns(); // 버튼으로부터 guess 값 가져오고
+
   // default 있으면 경고창 띄우고 리턴
   if (containsDefault()) {
     alert("모든 문항을 선택해주세요!");
     return;
   }
+
   // guess가 정답이면
   if (isGuessCorrect()) {
     incrementWinStreak();
@@ -186,10 +177,11 @@ ansBtn.addEventListener("click", () => {
 // 다시하기 버튼 눌렀을 때
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", (e) => {
+    // 올라가있을땐 클릭방지
     if (resultPopup.classList.contains("result-popup-up")) {
       return;
     }
-    // 팝업 숨기고
+    // 팝업 숨기고 재시작
     anim.closePopup(resultPopup, "fade-out", 700);
     initGame();
   });

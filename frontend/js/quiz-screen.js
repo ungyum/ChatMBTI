@@ -1,6 +1,7 @@
 const mbtiBtnChat = document.querySelectorAll(".mbti-btn-chat");
 const resultPopup = document.querySelector(".result-popup");
 const regameBtns = document.querySelectorAll(".regame-btn");
+const resultContainers = document.querySelectorAll(".result-container");
 const correctResultContainer = document.querySelector(
   ".correct-result-container"
 );
@@ -11,14 +12,42 @@ const winStreakValue = document.querySelector(".win-streak-value");
 const higestScoreValue = document.querySelector(".highest-score-value");
 const seeChatBtns = document.querySelectorAll(".see-chat-btn");
 
-// 설명화면 -> 채팅화면 애니메이션
-quizStartBtn.addEventListener("click", () => {
-  anim.screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
-});
-// 부품
 const focusInput = () => {
   inputField.focus();
 };
+
+const resultPopupDown = () => {
+  resultPopup.style.transition = "0s";
+  resultPopup.style.top = "0";
+  resultPopup.style.height = "100%";
+  setTimeout(() => {
+    resultPopup.style.transition = "0.5s";
+    resultPopup.classList.remove("result-popup-up");
+  }, 0);
+};
+
+const resultPopupUp = () => {
+  // 팝업 올리고
+  resultContainers.forEach((resultContainer) => {
+    resultContainer.style.setProperty(
+      "--screen-height",
+      body.offsetHeight + "px"
+    );
+  });
+  resultPopup.classList.add("result-popup-up");
+  // 뒷배경 치워주기
+  setTimeout(() => {
+    resultPopup.style.top = "50%";
+    resultPopup.style.height = "0";
+  }, 500);
+};
+
+// 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+// 퀴즈시작버튼 눌렀을 때
+quizStartBtn.addEventListener("click", () => {
+  anim.screenTransitionFade(quizInformScreen, chatScreen, 300, focusInput);
+});
 
 // mbtiBtnChat 누르면
 // 애니메이션
@@ -58,35 +87,19 @@ for (let i = 0; i < mbtiBtnChat.length; i++) {
   });
 }
 
-// result-container에도 click 넣어주기
-wrongResultContainer.addEventListener("click", () => {
-  if (resultPopup.classList.contains("result-popup-up")) {
-    closeResultPopup();
-  }
-});
-correctResultContainer.addEventListener("click", () => {
-  if (resultPopup.classList.contains("result-popup-up")) {
-    closeResultPopup();
-  }
+// result-container 올라가있을 때 클릭효과
+resultContainers.forEach((resultContainer) => {
+  resultContainer.addEventListener("click", () => {
+    if (resultPopup.classList.contains("result-popup-up")) {
+      resultPopupDown();
+    }
+  });
 });
 
 // 채팅 확인하기 버튼 눌렀을 때
 for (let i = 0; i < 2; i++) {
   seeChatBtns[i].addEventListener("click", (e) => {
-    e.stopPropagation();
-    // 팝업 올리고
-    resultPopup.classList.add("result-popup-up");
-    wrongResultContainer.style.setProperty(
-      "--screen-height",
-      body.offsetHeight + "px"
-    );
-    correctResultContainer.style.setProperty(
-      "--screen-height",
-      body.offsetHeight + "px"
-    );
-    setTimeout(() => {
-      resultPopup.style.top = "50%";
-      resultPopup.style.height = "0";
-    }, 500);
+    e.stopPropagation(); // 부모에게 클릭 전파 막기
+    resultPopupUp();
   });
 }
