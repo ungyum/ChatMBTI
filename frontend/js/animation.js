@@ -41,25 +41,25 @@ const anim = {
   // 1번: 팝업창 - element
   // 2번: css의 애니메이션 class 이름 - string
   // 3번: (optional) 애니메이션 시간 (ms) - number
-  openPopup: function (popup, animation, duration = 300) {
-    popup.style.setProperty("--custom-duration", duration + "ms");
+  openPopup: function (popup, animation, duration = undefined) {
+    if (duration) {
+      popup.style.setProperty("--custom-duration", duration + "ms");
+    }
+    popup.classList.remove(animation);
+    popup.offsetWidth = popup.offsetWidth;
     popup.classList.add(animation);
     popup.classList.remove("hidden");
-    setTimeout(() => {
-      popup.classList.remove(animation);
-      popup.style.removeProperty("--custom-duration");
-    }, duration);
   },
 
   // 팝업창 닫기 (인자는 동일)
-  closePopup: function (popup, animation, duration = 300) {
-    popup.style.setProperty("--custom-duration", duration + "ms");
+  closePopup: function (popup, animation, duration = undefined) {
+    if (duration) {
+      popup.style.setProperty("--custom-duration", duration + "ms");
+    }
+    popup.classList.remove(animation);
+    popup.offsetWidth = popup.offsetWidth;
     popup.classList.add(animation);
-    setTimeout(() => {
-      popup.classList.add("hidden");
-      popup.classList.remove(animation);
-      popup.style.removeProperty("--custom-duration");
-    }, duration);
+    popup.classList.add("hidden");
   },
 
   // 버튼 뒤집기

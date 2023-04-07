@@ -232,6 +232,7 @@ sendBtn.addEventListener("click", async (e) => {
   inputField.setAttribute("data-placeholder", getChatRecom()); // 랜덤 추천챗 골라와서 placeholder 바꿔주기
   displayChat(sanitizedUserInput, true); // 화면에 채팅 올라오고
   const loadingIcon = displayLoadingIcon(); // 답변 올때까지 로딩 아이콘
+  sendBtn.disabled = true; // 보내기 버튼 비활성화
   // api 호출
   try {
     const assistantReply = await api.postChat(
@@ -242,6 +243,7 @@ sendBtn.addEventListener("click", async (e) => {
     chatInterface.removeChild(loadingIcon); // 로딩아이콘 지워주고
     displayChat(assistantReply, false); // assistant reply 화면에 올라옴
     appendChatHistory(sanitizedUserInput, assistantReply); // 중요!!!! user history는 반드시 api 호출 후에 남겨줘야됨. 아니면 호출시 userInput 두번 들어감
+    sendBtn.disabled = false; // 보내기 버튼 활성화
   } catch {
     // api 실패 시 -> "챗봇이 죽었어요ㅠㅠ" 팝업 1.5초
     anim.displayPopupUnder(
@@ -250,7 +252,8 @@ sendBtn.addEventListener("click", async (e) => {
       "챗봇이 죽었어요ㅠㅠ",
       1500
     );
-    chatInterface.removeChild(loadingIcon);
+    chatInterface.removeChild(loadingIcon); // 로딩아이콘 지워주고
+    sendBtn.disabled = false; // 보내기 버튼 활성화
   }
 });
 

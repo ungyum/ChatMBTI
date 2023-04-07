@@ -4,12 +4,16 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
+}
+.quiz-inform-screen .quiz-discription-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   max-width: 78%;
-  margin: 0 auto;
-  margin-top: 100px;
   font-size: 20px;
   background-color: #e9ecdc;
-  padding: 25px;
+  padding: 0 25px;
   border-radius: 20px;
   font-weight: 500;
 }

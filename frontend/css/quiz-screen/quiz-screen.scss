@@ -3,14 +3,16 @@
 .quiz-inform-screen {
   @include _.flex-column;
   height: 100%;
-  max-width: 78%;
-  margin: 0 auto;
-  margin-top: 100px;
-  font-size: 20px;
-  background-color: #e9ecdc;
-  padding: 25px;
-  border-radius: 20px;
-  font-weight: 500;
+
+  .quiz-discription-container {
+    @include _.flex-column;
+    max-width: 78%;
+    font-size: 20px;
+    background-color: #e9ecdc;
+    padding: 0 25px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
 }
 
 .chat-screen {
