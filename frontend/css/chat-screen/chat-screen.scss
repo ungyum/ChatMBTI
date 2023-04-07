@@ -28,23 +28,26 @@
   position: relative;
 
   .input-field {
-    // border: 1px solid #ccc; // 삭제할거
     font-family: inherit;
     font-size: inherit;
-    padding: 0 6px 0 0;
+    padding-right: 6px;
     width: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     resize: both;
     min-height: 20px;
     line-height: 1.3;
     display: block;
-    max-height: 80px; // 최대 높이
+    max-height: 73px; // 최대 높이
     outline: none;
     resize: none;
+    border: none;
   }
   .input-field[contenteditable]:empty::before {
     content: attr(data-placeholder);
     color: rgb(176, 176, 176);
+  }
+  .input-field::-webkit-scrollbar {
+    display: none;
   }
 
   .send-btn {

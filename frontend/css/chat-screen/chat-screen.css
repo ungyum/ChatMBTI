@@ -33,20 +33,24 @@
 .input-field-container .input-field {
   font-family: inherit;
   font-size: inherit;
-  padding: 0 6px 0 0;
+  padding-right: 6px;
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   resize: both;
   min-height: 20px;
   line-height: 1.3;
   display: block;
-  max-height: 80px;
+  max-height: 73px;
   outline: none;
   resize: none;
+  border: none;
 }
 .input-field-container .input-field[contenteditable]:empty::before {
   content: attr(data-placeholder);
   color: rgb(176, 176, 176);
+}
+.input-field-container .input-field::-webkit-scrollbar {
+  display: none;
 }
 .input-field-container .send-btn {
   background-color: transparent;
