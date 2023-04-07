@@ -78,6 +78,37 @@ const anim = {
       btn.style.removeProperty("--custom-duration");
     }, duration);
   },
+
+  // 팝업 자체를 만들어서 넣어주는 함수
+  // 1번: 팝업이 들어갈 부모 - element
+  // 2번: 팝업의 css class 이름 - string
+  // 3번: 팝업의 내용 - string
+  // 4번: (optional) 팝업의 애니메이션 시간 (ms) - number: 기본값 300
+  // 5번: (optional) 팝업이 표시될 시간 (ms) - number: 기본값 2000
+  // 6번: (optional) 팝업 시작 애니메이션 - string: 기본값 fade-in
+  // 7번: (optional) 팝업 끝 애니메이션 - string: 기본값 fade-out
+  createPopupUnder: function (
+    parentElement,
+    popupClassNameForCss,
+    popupInnerText,
+    popupDuration = 1500,
+    animDuration = 300,
+    startAnimation = "fade-in",
+    endAnimation = "fade-out"
+  ) {
+    const popup = document.createElement("div");
+    popup.classList.add(popupClassNameForCss, startAnimation);
+    popup.style.setProperty("--custom-duration", animDuration + "ms");
+    popup.innerText = popupInnerText;
+    parentElement.appendChild(popup);
+    setTimeout(() => {
+      popup.classList.remove(startAnimation);
+      popup.classList.add(endAnimation);
+      setTimeout(() => {
+        parentElement.removeChild(popup);
+      }, animDuration);
+    }, popupDuration);
+  },
 };
 
 // help-btn 누르면 팝업창 띄우기

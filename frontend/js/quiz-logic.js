@@ -150,6 +150,16 @@ const getHighestScore = () => {
   }
 };
 
+const closeResultPopup = () => {
+  resultPopup.style.transition = "0s";
+  resultPopup.style.top = "0";
+  resultPopup.style.height = "100%";
+  setTimeout(() => {
+    resultPopup.style.transition = "0.5s";
+    resultPopup.classList.remove("result-popup-up");
+  }, 0);
+};
+
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 // 시작화면에서 퀴즈버튼 눌렀을 때
@@ -183,7 +193,6 @@ ansBtn.addEventListener("click", () => {
 regameBtns.forEach((regameBtn) => {
   regameBtn.addEventListener("click", (e) => {
     if (resultPopup.classList.contains("result-popup-up")) {
-      resultPopup.classList.remove("result-popup-up");
       return;
     }
     // 팝업 숨기고
@@ -195,12 +204,12 @@ regameBtns.forEach((regameBtn) => {
 // result-container에도 click 넣어주기
 wrongResultContainer.addEventListener("click", () => {
   if (resultPopup.classList.contains("result-popup-up")) {
-    resultPopup.classList.remove("result-popup-up");
+    closeResultPopup();
   }
 });
 correctResultContainer.addEventListener("click", () => {
   if (resultPopup.classList.contains("result-popup-up")) {
-    resultPopup.classList.remove("result-popup-up");
+    closeResultPopup();
   }
 });
 
@@ -218,5 +227,9 @@ for (let i = 0; i < 2; i++) {
       "--screen-height",
       body.offsetHeight + "px"
     );
+    setTimeout(() => {
+      resultPopup.style.top = "50%";
+      resultPopup.style.height = "0";
+    }, 500);
   });
 }

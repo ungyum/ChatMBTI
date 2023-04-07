@@ -15,38 +15,50 @@
   position: relative; // position 값을 아무거나라도 줘야 자식의 absolute가 작동함
   color: _.$font-color; // 이 안의 모든 글씨는 검은색
   height: 100%; // screen 의 height에 딱 맞추기
+}
 
-  // 인풋박스 보더라인 잡힌거
-  .chat-input {
-    width: 90%;
-    border: 1px solid _.$font-color;
-    padding: 0 20px;
-    $input-height: 40px;
-    height: $input-height;
-    border-radius: calc($input-height / 2);
-    @include _.flex-row;
-    margin: 10px 0;
+// 인풋
+.input-field-container {
+  width: 90%;
+  border: 1px solid _.$font-color;
+  padding: 6px 20px;
+  border-radius: 20px;
+  @include _.flex-row;
+  margin: 10px 0;
+  position: relative;
 
-    // 인풋
-    input {
-      background-color: transparent;
-      border: none;
-      outline: none;
-      flex-grow: 1;
-    }
-    input::placeholder {
-      color: rgb(176, 176, 176);
-    }
+  .input-field {
+    // border: 1px solid #ccc; // 삭제할거
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0 6px 0 0;
+    width: 100%;
+    overflow: scroll;
+    resize: both;
+    min-height: 20px;
+    line-height: 1.3;
+    display: block;
+    max-height: 80px; // 최대 높이
+    outline: none;
+    resize: none;
+  }
 
-    // 보내기
-    .send-btn {
-      background-color: transparent;
-      border: none;
-      color: _.$base-color;
-    }
+  .input-field[contenteditable]:empty::before {
+    content: "챗을 입력하세요";
+    color: rgb(176, 176, 176);
+  }
+
+  .send-btn {
+    background-color: transparent;
+    // border: none;
+    color: _.$base-color;
+    white-space: nowrap;
+    align-self: end;
+    margin-left: 10px;
   }
 }
 
+// 채팅 스크롤 쪽 화면
 .chat-scrollbox {
   flex-grow: 1;
   width: 100%; // 스크롤바 끝으로 보내기
@@ -55,7 +67,6 @@
   flex-direction: column;
   overflow-y: scroll;
 }
-
 .chat-interface {
   // width: 90vw; // 가로 꽉 채우기
   @include _.flex-column;
@@ -108,4 +119,11 @@
       border: none;
     }
   }
+}
+
+// 워닝 팝법
+.warning-popup {
+  @include _.popup;
+  bottom: 100%;
+  margin: 0 0 10px 0;
 }

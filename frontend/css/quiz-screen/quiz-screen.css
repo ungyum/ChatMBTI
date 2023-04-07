@@ -58,7 +58,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 
 .quiz-start-btn {
@@ -85,8 +85,8 @@
   border-radius: 20px;
   font-weight: 400;
   position: relative;
-  transition: 0.4s;
-  transition-timing-function: cubic-bezier(0.34, 1.28, 0.99, 1.01);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.34, 1.26, 0.37, 0.98);
 }
 .result-container .regame-btn {
   font-size: 30px;
@@ -115,6 +115,7 @@
   background-color: transparent;
 }
 .result-popup-up .result-container {
+  position: absolute;
   transform: translateY(calc(var(--screen-height) / 2 * -1));
 }
 .result-popup-up .see-chat-btn {
