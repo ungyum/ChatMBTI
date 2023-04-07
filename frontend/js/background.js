@@ -1,6 +1,6 @@
 const screen = document.querySelector(".screen");
 const banner = document.querySelector(".banner");
-const ad = document.querySelector(".ad-bottom");
+const ad = document.querySelector(".ad-btm");
 const bannerHeight = banner.offsetHeight;
 const adHeight = ad.offsetHeight;
 const body = document.querySelector("body");

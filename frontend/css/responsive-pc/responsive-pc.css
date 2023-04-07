@@ -16,11 +16,32 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    justify-content: space-between;
   }
   .input-field-container {
     margin-bottom: 20px;
   }
   .fa-chevron-left {
     margin-top: 10px;
+  }
+  .ad-lt,
+  .ad-rt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(219, 219, 219);
+    font-size: 1.3rem;
+    color: #494949;
+    font-weight: 100;
+    position: relative;
+  }
+}
+@media (max-width: 600px) {
+  .ad-lt,
+  .ad-rt {
+    display: none;
   }
 }/*# sourceMappingURL=responsive-pc.css.map */

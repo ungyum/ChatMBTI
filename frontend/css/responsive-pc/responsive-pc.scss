@@ -17,6 +17,7 @@
 
   body {
     @include _.flex-row;
+    justify-content: space-between;
   }
 
   .input-field-container {
@@ -25,5 +26,25 @@
 
   .fa-chevron-left {
     margin-top: 10px;
+  }
+
+  .ad-lt,
+  .ad-rt {
+    @include _.flex-row;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(219, 219, 219);
+    font-size: 1.3rem;
+    color: _.$font-color;
+    font-weight: 100;
+    position: relative;
+  }
+}
+
+// 사이드 광고
+@media (max-width: 600px) {
+  .ad-lt,
+  .ad-rt {
+    display: none;
   }
 }
