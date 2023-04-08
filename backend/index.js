@@ -3,16 +3,17 @@ const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const app = express();
+const serverless = require("serverless-http");
 
 // CORS
 const cors = require("cors");
-// let corsOptions = {
-//   origin: "http://localhost:3000",
-//   methods: ["POST"],
-//   allowedHeaders: ["Content-Type"],
-//   credentials: true,
-// };
-app.use(cors()); // 나중에 corsOPtions 넣어주기
+let corsOptions = {
+  origin: "http://localhost:3000",
+  // methods: ["POST"],
+  // allowedHeaders: ["Content-Type"],
+  credentials: true,
+};
+app.use(cors(corsOptions)); // 나중에 corsOPtions 넣어주기
 
 // post 받기
 app.use(express.json());
@@ -105,6 +106,8 @@ app.post("/api", async (req, res) => {
 });
 
 // 서버 열기
-app.listen(4000, () => {
-  console.log(`Server listening at http://localhost:4000`);
-});
+// app.listen(4000, () => {
+//   console.log(`Server listening at http://localhost:4000`);
+// });
+
+module.exports.handler = serverless(app);
