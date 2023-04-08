@@ -7,11 +7,8 @@ const api = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // prettier-ignore
-        "userInput": userInput,
-        // prettier-ignore
+        "userInput": userInput, // property에 콤마 없어지면 minify 할때 에러남: pretter 설정에서 quote props: preserve로 바꿔주면 됨
         "chatHistory": chatHistory,
-        // prettier-ignore
         "mbtiRaw": mbti,
       }),
     });
