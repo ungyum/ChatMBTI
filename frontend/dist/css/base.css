@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Pretendard Variable", sans-serif;
+}
+
+/* 이거 있어야 body 풀화면 가능 */
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  word-spacing: 1.4px;
+  display: flex;
+  justify-content: space-between;
+  /* height: 100vh; 이거 지워야 모바일에서 잘 작동함 */
+  height: 100%;
+  background-color: rgb(252, 255, 247);
+  color: #494949;
+}
+
+/* 태그들 세로로 정렬 */
+body {
+  flex-direction: column;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
