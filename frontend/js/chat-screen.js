@@ -34,16 +34,18 @@ const displayChat = (message, isUser) => {
   chatMessage.classList.add("chat-message");
   chatMessage.classList.add(isUser ? "user" : "assistant");
   if (isUser) {
-    chatMessage.innerHTML = `<span class="chat"></span>`;
+    const chat = document.createElement("span");
+    chat.classList.add("chat");
+    chatMessage.appendChild(chat);
   } else {
-    chatMessage.innerHTML = `<img
-            class="profile-pic"
-            src="./assets/profile-icon.png"
-            alt="profile pic"
-          />
-          <span class="chat"
-            ></span
-          >`;
+    const profilePic = document.createElement("img");
+    profilePic.classList.add("profile-pic");
+    profilePic.src = "./assets/profile-icon.png";
+    profilePic.alt = "profile pic";
+    chatMessage.appendChild(profilePic);
+    const chat = document.createElement("span");
+    chat.classList.add("chat");
+    chatMessage.appendChild(chat);
   }
   chatInterface.appendChild(chatMessage);
   addChatText(message);

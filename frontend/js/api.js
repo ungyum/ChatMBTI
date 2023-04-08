@@ -7,9 +7,12 @@ const api = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userInput: userInput,
-        chatHistory: chatHistory,
-        mbtiRaw: mbti,
+        // prettier-ignore
+        "userInput": userInput,
+        // prettier-ignore
+        "chatHistory": chatHistory,
+        // prettier-ignore
+        "mbtiRaw": mbti,
       }),
     });
     const data = await response.json();
