@@ -57,6 +57,9 @@
   white-space: nowrap;
   align-self: end;
   margin-left: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .chat-scrollbox {

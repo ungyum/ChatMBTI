@@ -57,6 +57,7 @@
     white-space: nowrap;
     align-self: end;
     margin-left: 10px;
+    user-select: none; // 선택 안되게 하기
   }
 }
 
