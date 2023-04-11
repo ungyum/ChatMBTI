@@ -212,8 +212,13 @@ initChat();
 inputField.focus();
 
 // 보내기 버튼 눌렀을 때
-sendBtn.addEventListener("click", async (e) => {
+sendBtn.onclick = async (e) => {
+  if (sendBtn.disabled) {
+    e.preventDefault();
+    return;
+  }
   // UX 설정
+  sendBtn.disabled = true;
   e.preventDefault();
   inputField.focus();
 
@@ -221,6 +226,7 @@ sendBtn.addEventListener("click", async (e) => {
   // 1. 공백으로만 구성되어있을 때
   // 2. 입력값이 70자 이상일 때
   if (isOnlySpace() || isInputTooLong()) {
+    sendBtn.disabled = false;
     return;
   }
 
@@ -229,6 +235,7 @@ sendBtn.addEventListener("click", async (e) => {
   // 2. 금지어 포함되어 있으면 안됨
   if (isQuiz()) {
     if ((inputField.innerText === "") | hasProhibitedWords()) {
+      sendBtn.disabled = false;
       return;
     }
   }
@@ -238,12 +245,12 @@ sendBtn.addEventListener("click", async (e) => {
   // 입력안했으면 innerText에 placeholder 넣어주고 리턴
   if (sanitizedUserInput === "") {
     inputField.innerText = inputField.getAttribute("data-placeholder");
+    sendBtn.disabled = false;
     return;
   }
   inputField.setAttribute("data-placeholder", getChatRecom()); // 랜덤 추천챗 골라와서 placeholder 바꿔주기
   displayChat(sanitizedUserInput, true); // 화면에 채팅 올라오고
   const loadingIcon = displayLoadingIcon(); // 답변 올때까지 로딩 아이콘
-  sendBtn.disabled = true; // 보내기 버튼 비활성화
   // api 호출
   try {
     const assistantReply = await api.postChat(
@@ -266,7 +273,7 @@ sendBtn.addEventListener("click", async (e) => {
     chatInterface.removeChild(loadingIcon); // 로딩아이콘 지워주고
     sendBtn.disabled = false; // 보내기 버튼 활성화
   }
-});
+};
 
 // 엔터키로도 보내기
 inputField.onkeydown = (e) => {
@@ -283,6 +290,7 @@ inputField.onkeydown = (e) => {
   }
 };
 inputField.addEventListener("keypress", (e) => {
+  e.stopPropagation();
   if (e.key === "Enter" || e.keyCode === 13) {
     if (!e.shiftKey) {
       sendBtn.click();

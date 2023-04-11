@@ -1,6 +1,7 @@
 @use "../general/foundation" as _;
 
 @media (min-width: 600px) {
+  // 양옆 광고 제외한 부분
   .pc {
     width: 400px;
     border: 10px solid _.$font-color;
@@ -9,10 +10,10 @@
   }
   header {
     background-color: _.$font-color;
-  }
 
-  .banner {
-    border-radius: 10px 10px 0 0;
+    .banner {
+      border-radius: 10px 10px 0 0;
+    }
   }
 
   body {
@@ -20,14 +21,16 @@
     justify-content: space-between;
   }
 
-  .input-field-container {
-    margin-bottom: 20px;
-  }
+  // 하단 광고 없애니까 너무 바닥에 있는 것 같아서 좀 올렸어.
+  // .input-field-container {
+  //   margin-bottom: 20px;
+  // }
 
   .fa-chevron-left {
     margin-top: 10px;
   }
 
+  // 사이드 광고
   .ad-lt,
   .ad-rt {
     @include _.flex-row;
@@ -41,10 +44,17 @@
   }
 }
 
-// 사이드 광고
+// 사이드 광고 600px 이하에서는 안보이게
 @media (max-width: 600px) {
   .ad-lt,
   .ad-rt {
     display: none;
+  }
+}
+
+// 세로 길이가 900 이상이면 가로 길이를 좀 더 늘려
+@media (min-height: 900px) {
+  .pc {
+    width: 600px;
   }
 }

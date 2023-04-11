@@ -107,7 +107,7 @@
 
     // 아이콘
     .profile-pic {
-      @include _.square(40px);
+      @include _.square(60px);
       border-radius: 9px;
       margin: 0 10px 0 0;
     }
