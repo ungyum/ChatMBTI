@@ -106,6 +106,18 @@ const displayLoadingIcon = () => {
 const appendChatHistory = (user, assistant) => {
   chatHistory.push({ role: "user", content: user });
   chatHistory.push({ role: "assistant", content: assistant });
+  const assistantChatCount = 4; // 마지막 x개의 assistant 메시지만 들어감
+  if (chatHistory.length > assistantChatCount * 2) {
+    // chatHistory의 뒤에서 8개를 새로운 배열로 만들기
+    let lastFewChats = chatHistory.slice(-assistantChatCount * 2);
+    // chatHistory의 뒤에서 8개를 빤 나머지를 새로운 배열로 만들기
+    let firstFewChats = chatHistory.slice(0, -assistantChatCount * 2);
+    // firstFewChats 마지막 요소를 제거
+    firstFewChats.pop();
+    // firstFewChats에 lastFewChats를 합쳐서 새로운 배열로 만들기
+    chatHistory = firstFewChats.concat(lastFewChats);
+  }
+  console.log(chatHistory);
 };
 
 const isQuiz = () => {
@@ -169,16 +181,13 @@ const chatRecom = [
   "오늘 날씨 어때?",
   "너 이번 주말에 뭐해?",
   "지금 할 것 좀 추천해줘.",
-  "인간이 느끼는 감정이란 뭘까?",
   "인공지능에 대해서 어떻게 생각해?",
   "너가 가장 좋아하는 책이 뭐야?",
   "심심한데 드립 하나만 쳐줘.",
   "너는 심심할때 주로 뭐해?",
   "인공지능의 지능과 사람의 지능 중에 어느 것이 더 높아?",
   "인공지능이 자아를 가질 수 있다던데, 진짜야?",
-  "뉴욕에 있는 창문의 개수를 다 세면 대략 몇개일까?",
   "문의 개수와 바퀴의 개수 중 뭐가 더 많을까?",
-  "지구가 둥근 걸 증명해봐.",
   "내가 지금 생각하고 있는 걸 맞춰봐.",
   "인생은 공평해 불공평해?",
 ];
@@ -190,7 +199,7 @@ const prohibitedWords = ["mbti", "성격", "유형"];
 let inputMaxLength = 70; // number
 
 // 채팅 기록: 유저챗이면 {role: "user", content: "메시지"}, 어시스턴트챗이면 {role: "assistant", content: "메시지"}
-const chatHistory = [];
+let chatHistory = [];
 // mbti 값 가져오기
 let mbti = sessionStorage.getItem("mbti");
 // 챗화면일때 달라지는점

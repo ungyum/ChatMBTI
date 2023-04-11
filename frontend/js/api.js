@@ -2,7 +2,7 @@ const api = {
   // post 보내는 함수
   postChat: async function (userInput, chatHistory, mbti) {
     const response = await fetch(
-      "https://a69nkirgb3.execute-api.ap-northeast-2.amazonaws.com/prod/api",
+      "https://3pba7ji2tzwavco7qbpmvvpmbm0ztzxs.lambda-url.ap-northeast-2.on.aws/api",
       {
         method: "POST",
         headers: {

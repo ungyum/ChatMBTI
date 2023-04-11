@@ -1,5 +1,7 @@
 frontend/css/assets
 
+**.DS_Store
+
 **test**
 # Logs
 logs
