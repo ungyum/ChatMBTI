@@ -30,6 +30,10 @@ $banner-height: 53px;
   color: _.$font-color;
   font-weight: 100;
   position: relative;
+  transition: 1s;
+  & * {
+    transition: 1s;
+  }
 
   .banner-bold {
     font-weight: 600;
@@ -60,7 +64,7 @@ $banner-height: 53px;
 }
 // class에 이거 추가하면 하얘짐
 .lighten-image {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
   background-blend-mode: lighten;
 }
 

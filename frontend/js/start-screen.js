@@ -67,6 +67,7 @@ sessionStorage.setItem("mbti", mbti.join(""));
 startBtn.addEventListener("click", () => {
   anim.screenTransitionFade(helloScreen, startScreen, 500);
   screen.classList.add("lighten-image");
+  banner.classList.remove("banner-hidden");
 });
 
 // mbti 버튼 클릭 시
