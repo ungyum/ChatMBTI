@@ -41,7 +41,7 @@
     <script src="../js/animation.js" defer></script>
     <script src="../js/chat-screen.js" defer></script>
     <script src="../js/api.js" defer></script>
-    <title>ChatMBTI</title>
+    <title>ChatMBTI - MBTI 챗봇과 대화해보세요</title>
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3915773952450081"
@@ -64,22 +64,14 @@
       <header>
         <div class="banner">
           <span><span class="banner-bold">ChatMBTI</span></span>
-          <span class="material-symbols-outlined help-btn heart-beat">
-            help
-          </span>
-          <div class="help-popup hidden">
-            <p class="mbti-value">
-              친구의 MBTI는 <span class="help-popup-mbti">OOOO</span>입니다.
-              즐겁게 대화를 나누어보세요! 😝
-            </p>
-          </div>
+          <span class="help-popup-mbti banner-mbti"></span>
         </div>
       </header>
       <i
         class="back-btn fa-solid fa-chevron-left"
         onclick="location.href = 'index.html'"
       ></i>
-      <div class="screen">
+      <div class="screen bg-2">
         <!-- 챗스크린 -->
         <div class="chat-screen">
           <div class="chat-scrollbox">

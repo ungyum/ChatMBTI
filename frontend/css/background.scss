@@ -41,6 +41,12 @@ $banner-height: 53px;
     font-family: "HoengseongHanu", sans-serif;
   }
 
+  .banner-mbti {
+    font-weight: 600;
+    padding-right: 20px;
+    font-family: "HoengseongHanu", sans-serif;
+  }
+
   // 도움 버튼
   .help-btn {
     $font-size: 38px;
@@ -57,15 +63,6 @@ $banner-height: 53px;
 
 .screen {
   height: var(--screen-height);
-  background-image: url("../assets/background.png");
-  background-size: cover;
-  background-position: center;
-  transition: 1s;
-}
-// class에 이거 추가하면 하얘짐
-.lighten-image {
-  background-color: rgba(255, 255, 255, 0.25);
-  background-blend-mode: lighten;
 }
 
 @media (min-width: 720px) {
@@ -119,9 +116,5 @@ button {
   p {
     margin: 0;
     padding: 0;
-  }
-
-  .help-popup-mbti {
-    font-weight: 400;
   }
 }

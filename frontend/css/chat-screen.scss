@@ -1,5 +1,13 @@
 @use "general/foundation" as _;
 
+.bg-2 {
+  background-image: url("../assets/bg-2.png");
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-blend-mode: lighten;
+}
+
 .fa-chevron-left {
   position: absolute; // 위치 고정
   font-size: 35px;
@@ -26,6 +34,7 @@
   @include _.flex-row;
   margin: 10px 0;
   position: relative;
+  background-color: _.$background-color;
 
   .input-field {
     font-family: inherit;
@@ -53,7 +62,7 @@
   .send-btn {
     background-color: transparent;
     // border: none;
-    color: _.$base-color;
+    color: #d39f1a;
     white-space: nowrap;
     align-self: end;
     margin-left: 10px;
@@ -70,6 +79,10 @@
   flex-direction: column;
   overflow-y: scroll;
 }
+.chat-scrollbox::-webkit-scrollbar {
+  background-color: transparent;
+}
+
 .chat-interface {
   // width: 90vw; // 가로 꽉 채우기
   @include _.flex-column;
@@ -79,8 +92,8 @@
     @include _.flex-row;
     align-items: flex-end;
     width: 100%;
-    margin-top: 10px;
-    padding: 0 calc(5% + 10px); // padding-left: 5% + 20px
+    margin-bottom: 10px;
+    padding: 0 10px 0 5%;
 
     // 챗박스
     .chat {
@@ -90,6 +103,7 @@
       padding: 5px 15px;
       font-size: 18px;
       overflow-wrap: break-word;
+      @include _.shadow;
     }
   }
 
@@ -104,12 +118,19 @@
 
   .assistant {
     justify-content: flex-start;
+    background-color: transparent;
 
-    // 아이콘
+    .chat {
+      background-color: _.$background-color;
+    }
+
+    // 프로필 아이콘
     .profile-pic {
-      @include _.square(60px);
-      border-radius: 9px;
+      @include _.square(50px);
+      border-radius: 15px;
       margin: 0 10px 0 0;
+      border: 3px solid _.$base-color;
+      @include _.shadow;
     }
   }
 

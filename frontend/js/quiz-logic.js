@@ -129,11 +129,13 @@ quizStartBtn.addEventListener("click", () => {
 
 // 결정하기 버튼 눌렀을 때
 ansBtn.addEventListener("click", () => {
+  ansBtn.disabled = true;
   setGuessFromBtns(); // 버튼으로부터 guess 값 가져오고
 
   // default 있으면 경고창 띄우고 리턴
   if (containsDefault()) {
     alert("모든 문항을 선택해주세요!");
+    ansBtn.disabled = false;
     return;
   }
 
@@ -159,6 +161,7 @@ regameBtns.forEach((regameBtn) => {
     }
     // 팝업 숨기고 재시작
     anim.closePopup(resultPopup, "fade-out", 700);
+    ansBtn.disabled = false;
     initGame();
   });
 });

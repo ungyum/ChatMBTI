@@ -9,6 +9,7 @@ const keywordText = document.querySelector(".keyword-text");
 const startBtn = document.querySelector(".start-btn");
 const helloScreen = document.querySelector(".hello-screen");
 const startScreen = document.querySelector(".start-screen");
+const bannerCurtain = document.querySelector(".banner-curtain");
 const mbtiKeywords = {
   // IS** ttff 순, jpjp 순
   "istj": "남 얘기 듣는거 안좋아함, 원리원칙, 철벽 잘 침", // property에 콤마 없어지면 minify 할때 에러남: pretter 설정에서 quote props: preserve로 바꿔주면 됨
@@ -67,6 +68,7 @@ sessionStorage.setItem("mbti", mbti.join(""));
 startBtn.addEventListener("click", () => {
   anim.screenTransitionFade(helloScreen, startScreen, 500);
   screen.classList.add("lighten-image");
+  bannerCurtain.classList.add("hidden");
   banner.classList.remove("banner-hidden");
 });
 
