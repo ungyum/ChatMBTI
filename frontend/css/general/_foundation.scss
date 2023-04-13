@@ -40,16 +40,29 @@ $background-color: #fcfff7;
   border-radius: 20px;
   padding: 5px 15px;
 }
+@mixin button-height($height) {
+  height: $height;
+  border-radius: calc($height/2);
+}
 
 // 컴포넌트
 // 기본 버튼
 @mixin default-button {
   @include background;
   font-size: 1rem;
-  border: 1px solid _.$font-color;
+  border: 1px solid $font-color;
   min-width: 150px;
-  $height: 36px; // 요거 조정하면 됨
-  height: $height;
-  border-radius: calc($height/2);
+  @include button-height(36px);
   box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+  }
+}
+
+@mixin screen {
+  @include flex-column;
+  width: 100%;
+  height: 100%;
 }

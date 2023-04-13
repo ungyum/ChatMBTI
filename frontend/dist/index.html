@@ -36,10 +36,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,0,0"
     />
     <link rel="stylesheet" href="css/for-hidden.css" />
-    <script src="js/index-cmtp.min.js" defer></script>
-    <!-- <script src="../js/background.js" defer></script>
+    <!-- <script src="js/index-cmtp.min.js" defer></script> -->
+    <script src="../js/background.js" defer></script>
     <script src="../js/animation.js" defer></script>
-    <script src="../js/start-screen.js" defer></script> -->
+    <script src="../js/start-screen.js" defer></script>
     <title>ChatMBTI</title>
     <script
       async
@@ -76,8 +76,12 @@
         </div>
       </header>
       <div class="screen">
+        <!-- 첫 화면 -->
+        <div class="hello-screen">
+          <button class="start-btn">시작하기</button>
+        </div>
         <!-- 스타트 스크린 -->
-        <div class="start-screen">
+        <div class="start-screen hidden">
           <div class="text-box">
             <p class="main-text">친구의 MBTI를 골라주세요!</p>
             <p class="keyword-text hidden">키워드</p>
@@ -88,10 +92,7 @@
             <div class="mbti-btn no3 flip"><span>T</span></div>
             <div class="mbti-btn no4 flip"><span>J</span></div>
           </div>
-          <button
-            class="start-btn"
-            onclick="location.href = 'chat-screen.html'"
-          >
+          <button class="chat-btn" onclick="location.href = 'chat-screen.html'">
             채팅하기
           </button>
           <button class="quiz-btn" onclick="location.href = 'quiz-screen.html'">

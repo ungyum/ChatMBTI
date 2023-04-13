@@ -6,6 +6,9 @@ const no4 = document.querySelector(".no4");
 const mbti = ["i", "s", "t", "j"]; // mbti 값 담아줄 변수
 const mainText = document.querySelector(".main-text");
 const keywordText = document.querySelector(".keyword-text");
+const startBtn = document.querySelector(".start-btn");
+const helloScreen = document.querySelector(".hello-screen");
+const startScreen = document.querySelector(".start-screen");
 const mbtiKeywords = {
   // IS** ttff 순, jpjp 순
   "istj": "남 얘기 듣는거 안좋아함, 원리원칙, 철벽 잘 침", // property에 콤마 없어지면 minify 할때 에러남: pretter 설정에서 quote props: preserve로 바꿔주면 됨
@@ -59,6 +62,12 @@ const updateKeyword = () => {
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 // 세션 초기화
 sessionStorage.setItem("mbti", mbti.join(""));
+
+// start-btn 클릭 시 helloScreen에서 startscreen으로 transition
+startBtn.addEventListener("click", () => {
+  anim.screenTransitionFade(helloScreen, startScreen, 500);
+  screen.classList.add("lighten-image");
+});
 
 // mbti 버튼 클릭 시
 for (let i = 0; i < 4; i++) {

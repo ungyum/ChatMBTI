@@ -9,8 +9,8 @@ const anim = {
   // 화면 전환
   // 1번: 기존 화면 - element
   // 2번: 바뀔 화면 - element
-  // 3번: (optional) 애니메이션 시간 (ms) - number
-  // 4번: (optional) 애니메이션 끝나고 실행할 함수 - function
+  // 3번: (optional) 애니메이션 시간 (ms) - number - 300
+  // 4번: (optional) 애니메이션 끝나고 실행할 함수 - function - () => {}
   screenTransitionFade: function (
     screen1,
     screen2,

@@ -1,4 +1,4 @@
-@use "../general/foundation" as _;
+@use "general/foundation" as _;
 
 .quiz-inform-screen {
   @include _.flex-column;
@@ -37,14 +37,11 @@
 
   // 결정하기 버튼
   .ans-btn {
-    @include _.background;
-    font-size: 1rem;
-    border: 1px solid _.$font-color;
+    @include _.default-button;
     min-width: 100px;
     $height: 30px; // 요거 조정하면 됨
     height: $height;
     border-radius: calc($height/2);
-    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
     text-align: center;
     margin: 10px 0;
   }
@@ -63,16 +60,9 @@
   transition: 0.5s;
 }
 
-// 퀴즈 시작하기 버튼
+// 퀴즈화면 - 퀴즈 시작하기 버튼
 .quiz-start-btn {
-  @include _.background;
-  font-size: 1rem;
-  border: 1px solid _.$font-color;
-  min-width: 150px;
-  $height: 36px; // 요거 조정하면 됨
-  height: $height;
-  border-radius: calc($height/2);
-  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+  @include _.default-button;
   margin-bottom: 25px;
 }
 

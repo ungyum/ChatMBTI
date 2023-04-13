@@ -1,11 +1,21 @@
-@use "../general/foundation" as _;
+@use "general/foundation" as _;
+
+// 시작화면
+.hello-screen {
+  @include _.screen;
+
+  button {
+    @include _.default-button;
+    margin-top: 100%;
+    @include _.button-height(45px);
+    font-size: 1.2rem;
+    background-color: #ffd600;
+  }
+}
 
 // 메인 컨텐츠
 .start-screen {
-  @include _.flex-column;
-  color: _.$font-color;
-  width: 100%;
-  height: 100%;
+  @include _.screen;
 
   .text-box {
     @include _.flex-column;
@@ -32,7 +42,7 @@
     }
   }
 
-  // 시작하기 버튼
+  // 채팅하기, 퀴즈하기 버튼
   button {
     @include _.default-button;
     margin-bottom: 25px;
@@ -68,7 +78,6 @@
   animation-name: flip;
   animation-duration: var(--custom-duration, 0.5s);
 }
-
 @keyframes flip {
   0%,
   100% {
