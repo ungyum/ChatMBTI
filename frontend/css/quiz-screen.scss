@@ -80,15 +80,7 @@
   transition-timing-function: cubic-bezier(0.34, 1.26, 0.37, 0.98);
 
   .regame-btn {
-    font-size: 30px;
-    @include _.background;
-    font-size: 1rem;
-    border: 1px solid _.$font-color;
-    min-width: 150px;
-    $height: 36px; // 요거 조정하면 됨
-    height: $height;
-    border-radius: calc($height/2);
-    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+    @include _.default-button;
     margin: 10px;
   }
 

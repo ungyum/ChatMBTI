@@ -88,7 +88,7 @@
     margin: 0 10px;
     border-radius: 7px;
     border: 1.6px solid _.$font-color;
-    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+    box-shadow: 2.6px 4px 3.1px _.$shadow-color;
     user-select: none;
     @include _.flex-column;
   }

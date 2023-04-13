@@ -1,6 +1,8 @@
 $base-color: #f5e5c3;
 $font-color: #494949;
 $background-color: #fcfff7;
+$shadow-color: rgba(0, 0, 0, 0.293);
+
 @mixin flex-column {
   display: flex;
   justify-content: center;
@@ -53,7 +55,7 @@ $background-color: #fcfff7;
   border: 1px solid $font-color;
   min-width: 150px;
   @include button-height(36px);
-  box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+  box-shadow: 2.6px 4px 3.1px $shadow-color;
   transition: 0.4s;
   &:hover {
     transform: scale(1.1);
