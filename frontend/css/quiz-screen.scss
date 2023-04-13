@@ -7,7 +7,7 @@
   .quiz-discription-container {
     @include _.flex-column;
     max-width: 78%;
-    font-size: 20px;
+    font-size: 1rem;
     background-color: #e9ecdc;
     padding: 0 25px;
     border-radius: 20px;
