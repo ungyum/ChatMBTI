@@ -1,6 +1,6 @@
 @use "../general/foundation" as _;
 
-@media (min-width: 600px) {
+@media (min-width: 720px) {
   // 양옆 광고 제외한 부분
   .pc {
     width: 400px;
@@ -33,19 +33,14 @@
   // 사이드 광고
   .ad-lt,
   .ad-rt {
-    @include _.flex-row;
-    width: 100px;
-    height: 100px;
-    background-color: rgb(219, 219, 219);
-    font-size: 1.3rem;
-    color: _.$font-color;
-    font-weight: 100;
+    width: 160px;
+    height: 600px;
     position: relative;
   }
 }
 
 // 사이드 광고 600px 이하에서는 안보이게
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .ad-lt,
   .ad-rt {
     display: none;

@@ -34,14 +34,7 @@
 
   // 시작하기 버튼
   button {
-    @include _.background;
-    font-size: 1rem;
-    border: 1px solid _.$font-color;
-    min-width: 150px;
-    $height: 36px; // 요거 조정하면 됨
-    height: $height;
-    border-radius: calc($height/2);
-    box-shadow: 2.6px 4px 3.1px rgb(192, 192, 192);
+    @include _.default-button;
     margin-bottom: 25px;
   }
 
