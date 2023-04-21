@@ -17,7 +17,6 @@ const api = {
     );
     const data = await response.json();
     if (data.error) {
-      console.log("hello");
       throw new Error("Error in api.postChat");
     }
     return data.content; // 실제 챗

@@ -111,10 +111,12 @@ const anim = {
 };
 
 // help-btn 누르면 팝업창 띄우기
-helpBtn.addEventListener("click", () => {
-  if (helpPopup.classList.contains("hidden")) {
-    anim.openPopup(helpPopup, "fade-in");
-  } else {
-    anim.closePopup(helpPopup, "fade-out");
-  }
-});
+if (helpBtn !== null) {
+  helpBtn.addEventListener("click", () => {
+    if (helpPopup.classList.contains("hidden")) {
+      anim.openPopup(helpPopup, "fade-in");
+    } else {
+      anim.closePopup(helpPopup, "fade-out");
+    }
+  });
+}

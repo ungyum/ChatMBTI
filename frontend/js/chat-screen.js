@@ -117,7 +117,6 @@ const appendChatHistory = (user, assistant) => {
     // firstFewChats에 lastFewChats를 합쳐서 새로운 배열로 만들기
     chatHistory = firstFewChats.concat(lastFewChats);
   }
-  console.log(chatHistory);
 };
 
 const isQuiz = () => {
