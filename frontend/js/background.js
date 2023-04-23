@@ -15,6 +15,7 @@ const adjustScreenHeight = () => {
 
 // 시작 @@@@@@@@@@@@@@@@@@@@@@@
 adjustScreenHeight();
+body.classList.remove("hide-until-js-loaded");
 
 // 창 크기 변경할때마다 화면 높이 다시 설정
 window.addEventListener("resize", adjustScreenHeight);
