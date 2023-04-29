@@ -86,6 +86,10 @@ const mbtiList = [
 // post 받기
 app.post("/api", async (req, res) => {
   const { userInput, chatHistory, mbtiRaw } = req.body;
+  let isQuiz = false;
+  if (mbtiRaw.length !== 4) {
+    isQuiz = true;
+  }
   const mbti = mbtiRaw.length !== 4 ? mbtiList[mbtiRaw] : mbtiRaw; // 숫자로 왔을 때 mbti로 바꿔주기
   // apiCall이 error가 났을 때, 리턴하지 않고 apiCall(userInput, chatHistory, mbti)을 3번까지 다시 실행 후 그래도 error가 났을 때 에러를 리턴
   let error = false;
@@ -93,6 +97,11 @@ app.post("/api", async (req, res) => {
   for (let i = 0; i < 3; i++) {
     try {
       content = await apiCall(userInput, chatHistory, mbti);
+      if (isQuiz) {
+        const regex = new RegExp(`/${mbti}/`, "g");
+        // content에 포함되어 있는 "ISTJ"을 "OOOO"으로 바꿔주기
+        content = content.replace(regex, "OOOO");
+      }
       break;
     } catch (err) {
       error = true;
