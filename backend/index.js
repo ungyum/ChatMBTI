@@ -98,7 +98,7 @@ app.post("/api", async (req, res) => {
     try {
       content = await apiCall(userInput, chatHistory, mbti);
       if (isQuiz) {
-        const regex = new RegExp(`/${mbti}/`, "g");
+        const regex = new RegExp(`/${mbti.toUpperCase()}/`, "g");
         // content에 포함되어 있는 "ISTJ"을 "OOOO"으로 바꿔주기
         content = content.replace(regex, "OOOO");
       }
